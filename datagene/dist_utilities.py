@@ -24,6 +24,12 @@ import os
 from sklearn.feature_extraction.text import CountVectorizer
 import gensim
 
+### to github 
+
+def fagd():
+    print("ffd")
+
+print("fvffffdd")
 
 
 def area_u_c(matrix_org_s,matrix_gen_s,):
