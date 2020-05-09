@@ -25,6 +25,7 @@ import warnings
 warnings.filterwarnings("ignore")
 from datagene import dist_utilities as distu
 from datagene.transform import vect_extract
+from datagene.dist_utilities import inception, centropy
 import pandas as pd 
 
 
@@ -184,9 +185,9 @@ def dissimilarity_multiples_np(df_org_out,df_gen_out):
   df_org_out = pd.DataFrame(df_org_out)
   df_gen_out = pd.DataFrame(df_gen_out)
 
-  d_m_m["incept_multi"] = abs(distu.inception(df_gen_out)/inception(df_org_out)-1)
+  d_m_m["incept_multi"] = abs(distu.inception(df_gen_out)/distu.inception(df_org_out)-1)
 
-  d_m_m["cent_multi"] = (abs(distu.centropy(df_org_out,df_org_out)/distu.centropy(df_org_out,df_gen_out)-1))
+  d_m_m["cent_multi"] = (abs(distu.centropy(df_org_out,df_org_out)/centropy(df_org_out,df_gen_out)-1))
   place = abs(distu.ctc(df_org_out, df_org_out)/distu.ctc(df_org_out, df_org_out))
   d_m_m["ctc_multi"] = abs(abs(distu.ctc(df_gen_out, df_org_out)/distu.ctc(df_org_out, df_gen_out))-place)
   d_m_m["corexdc_multi"] = abs(distu.corexdc(df_org_out, df_gen_out)/distu.corexdc(df_org_out, df_org_out)-1)
