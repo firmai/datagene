@@ -29,6 +29,9 @@ from scipy import special
 
 ### to github 
 
+__all__ = ['inception', 'braycurtis']
+
+
 
 
 def area_u_c(matrix_org_s,matrix_gen_s,):
