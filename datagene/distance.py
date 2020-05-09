@@ -61,6 +61,17 @@ def bootstat(arr_mean, arr_mean_org):
   prob = distributions.t.sf(np.abs(un_var_t), deg) * 2
   return un_var_t, prob
 
+def stat_pval(single_org_total,single_gen_total):
+  std = np.sqrt((single_org_total.var(ddof=1) + single_gen_total.var(ddof=1))/2)
+  N = len(single_org_total) ## p-value deflator
+  un_var_t = (single_org_total.mean()-single_gen_total.mean())/(std*np.sqrt(2/N)); 
+  deg = 2*N - 2
+  pval = stats.distributions.t.sf(np.abs(un_var_t), deg) * 2  # use np.abs to get upper tail
+  df_pval =pd.DataFrame(pval, index=un_var_t.index.to_list(),columns=["pvalue"]).round(5)
+  return un_var_t, df_pval
+
+
+
 
 ## Matrix 
 ## Image Similarity
