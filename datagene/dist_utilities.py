@@ -23,8 +23,12 @@ from scipy.stats import kde
 import os
 from sklearn.feature_extraction.text import CountVectorizer
 import gensim
+from scipy import stats
+from scipy import special
+
 
 ### to github 
+
 
 
 def area_u_c(matrix_org_s,matrix_gen_s,):

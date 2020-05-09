@@ -23,7 +23,8 @@ from scipy.spatial.distance import directed_hausdorff
 from scipy import special
 import warnings
 warnings.filterwarnings("ignore")
-from datagene import dist_utilities as distu
+from datagene.dist_utilities import *
+from datagene.transform import vect_extract
 import pandas as pd 
 
 
@@ -183,19 +184,19 @@ def dissimilarity_multiples_np(df_org_out,df_gen_out):
   df_org_out = pd.DataFrame(df_org_out)
   df_gen_out = pd.DataFrame(df_gen_out)
 
-  d_m_m["incept_multi"] = abs(distu.inception(df_gen_out)/inception(df_org_out)-1)
+  d_m_m["incept_multi"] = abs(inception(df_gen_out)/inception(df_org_out)-1)
 
-  d_m_m["cent_multi"] = (abs(distu.centropy(df_org_out,df_org_out)/distu.centropy(df_org_out,df_gen_out)-1))
-  place = abs(distu.ctc(df_org_out, df_org_out)/distu.ctc(df_org_out, df_org_out))
-  d_m_m["ctc_multi"] = abs(abs(distu.ctc(df_gen_out, df_org_out)/distu.ctc(df_org_out, df_gen_out))-place)
-  d_m_m["corexdc_multi"] = abs(distu.corexdc(df_org_out, df_gen_out)/distu.corexdc(df_org_out, df_org_out)-1)
-  d_m_m["ctcdc_mult"] = abs(distu.ctcdc(df_org_out, df_gen_out)/distu.ctcdc(df_org_out, df_org_out)-1)
-  hold = abs(distu.mutual_information((df_org_out, df_org_out))/distu.mutual_information((df_org_out, df_org_out)))
-  d_m_m["mutual_mult"] = abs(abs(distu.mutual_information((df_gen_out, df_gen_out))/distu.mutual_information((df_org_out, df_gen_out))) - hold)
+  d_m_m["cent_multi"] = (abs(centropy(df_org_out,df_org_out)/centropy(df_org_out,df_gen_out)-1))
+  place = abs(ctc(df_org_out, df_org_out)/ctc(df_org_out, df_org_out))
+  d_m_m["ctc_multi"] = abs(abs(ctc(df_gen_out, df_org_out)/ctc(df_org_out, df_gen_out))-place)
+  d_m_m["corexdc_multi"] = abs(corexdc(df_org_out, df_gen_out)/corexdc(df_org_out, df_org_out)-1)
+  d_m_m["ctcdc_mult"] = abs(ctcdc(df_org_out, df_gen_out)/ctcdc(df_org_out, df_org_out)-1)
+  hold = abs(mutual_information((df_org_out, df_org_out))/mutual_information((df_org_out, df_org_out)))
+  d_m_m["mutual_mult"] = abs(abs(mutual_information((df_gen_out, df_gen_out))/mutual_information((df_org_out, df_gen_out))) - hold)
 
-  #d_m_m["corex"] = abs(distu.corex(df_org_out,df_org_out)/distu.corex(df_org_out,df_gen_out)) #correlation not distance
-  hold = distu.mi(df_org_out,df_org_out, base=2, alpha=0)/distu.mi(df_org_out,df_org_out, base=2, alpha=0)
-  d_m_m["minfo"] = abs(distu.mi(df_org_out,df_org_out, base=2, alpha=0)/distu.mi(df_org_out,df_gen_out, base=2, alpha=0) - hold) #could work
+  #d_m_m["corex"] = abs(corex(df_org_out,df_org_out)/corex(df_org_out,df_gen_out)) #correlation not distance
+  hold = mi(df_org_out,df_org_out, base=2, alpha=0)/mi(df_org_out,df_org_out, base=2, alpha=0)
+  d_m_m["minfo"] = abs(mi(df_org_out,df_org_out, base=2, alpha=0)/mi(df_org_out,df_gen_out, base=2, alpha=0) - hold) #could work
 
   return OrderedDict([(key,round(abs(ra),5)) for key, ra in d_m_m.items()])
 
@@ -203,14 +204,14 @@ def dissimilarity_multiples_np(df_org_out,df_gen_out):
 def matrix_distance(a,b, skip_bhat=False):
   dict_dist = OrderedDict()
   #similarity
-  dict_dist["correlation"] = distu.correlation(a, b)-distu.correlation(a,a)
-  dict_dist["intersection"] = distu.return_intersection(a, b)-distu.return_intersection(a,a)
-  dict_dist["renyi_divergence"] =  abs(distu.renyi_divergence(a,b))-abs(distu.renyi_divergence(a,a))
-  dict_dist["pearson_rho"] = np.nanmean(distu.pearson_rho(a,b))-np.nanmean(distu.pearson_rho(a,a))
-  dict_dist["jensen_shannon_divergence"] = np.nanmean(distu.jensen_shannon_divergence(a,b))-np.nanmean(distu.jensen_shannon_divergence(a,a))
+  dict_dist["correlation"] = correlation(a, b)-correlation(a,a)
+  dict_dist["intersection"] = return_intersection(a, b)-return_intersection(a,a)
+  dict_dist["renyi_divergence"] =  abs(renyi_divergence(a,b))-abs(renyi_divergence(a,a))
+  dict_dist["pearson_rho"] = np.nanmean(pearson_rho(a,b))-np.nanmean(pearson_rho(a,a))
+  dict_dist["jensen_shannon_divergence"] = np.nanmean(jensen_shannon_divergence(a,b))-np.nanmean(jensen_shannon_divergence(a,a))
 
-  dict_dist["ks_statistic_kde"] = distu.ks_statistic_kde(a,b)
-  dict_dist["js_metric"] = distu.js_metric(a,b)
+  dict_dist["ks_statistic_kde"] = ks_statistic_kde(a,b)
+  dict_dist["js_metric"] = js_metric(a,b)
   
   #distance
   dict_dist["dice"] = round(abs(dice(a, b)),5) - round(abs(dice(a, a)),5)
