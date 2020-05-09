@@ -24,6 +24,7 @@ from scipy import special
 import warnings
 warnings.filterwarnings("ignore")
 from datagene import dist_utilities as distu
+import pandas as pd 
 
 
 ## Tensor
