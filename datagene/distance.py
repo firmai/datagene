@@ -25,7 +25,6 @@ import warnings
 warnings.filterwarnings("ignore")
 from datagene import dist_utilities as distu
 from datagene.transform import vect_extract
-from datagene.dist_utilities import inception, centropy
 import pandas as pd 
 
 
