@@ -26,13 +26,6 @@ import gensim
 
 ### to github 
 
-def fagd():
-    print("ffd")
-
-print("fvffffddfdd")
-
-print("fdfddf")
-
 
 def area_u_c(matrix_org_s,matrix_gen_s,):
 
