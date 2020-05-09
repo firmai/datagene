@@ -26,6 +26,9 @@ warnings.filterwarnings("ignore")
 from datagene.dist_utilities import *
 from datagene.transform import vect_extract
 import pandas as pd 
+from scipy import stats
+
+
 
 
 ## Tensor
