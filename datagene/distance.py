@@ -26,7 +26,6 @@ warnings.filterwarnings("ignore")
 from .dist_utilities import *
 import datagene.dist_utilities as distu
 from datagene.transform import vect_extract
-from distance import *
 import pandas as pd 
 from scipy import stats
 
