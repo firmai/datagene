@@ -23,7 +23,7 @@ from scipy.spatial.distance import directed_hausdorff
 from scipy import special
 import warnings
 warnings.filterwarnings("ignore")
-from .dist_utilities import inception
+from datagene.dist_utilities import inception
 import datagene.dist_utilities as distu
 from datagene.transform import vect_extract
 import pandas as pd 
