@@ -123,8 +123,8 @@ From Vector:
 Examples:
 ---------
 
-#### Example Transformation Recipe Pipeline 1
-There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use one transformation at a time. Your architecture should be emperically driven. That generally means developing a knowingly bad and knowingly good synthetic dataset, and comparing them using a range of transformations and distance metrics to identify which methods best capture their difference. We have developed a very simple pipeline that can take in many datasets to perform multiple operations resulting in a range of encoded-decomposition on which various similarity statistics can be calculated. In the future, we will add more tranformations to this pipeline to help with array operations like swapping axes, transpositions, and others.
+#### Transformation Recipe Pipeline 1
+There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use one transformation at a time. Your architecture should be emperically driven. That generally means developing a knowingly bad and knowingly good synthetic dataset, and comparing them using a range of transformations and distance metrics to identify which methods best capture their difference. We have developed a very simple pipeline that can take in many datasets to perform multiple operations resulting in a range of encoded-decomposition on which various similarity statistics can be calculated. In the future, we will add more tranformations to this pipeline to help with array operations like swapping axes, transpositions, and others. Researchers would also be able to share which transformation pipelines were best suited there problem, such a database can further ehance data similarity research. 
 
 ```python
 
@@ -141,7 +141,7 @@ recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1(datasets)
 
 ```
 
-#### Example Transformation Recipe Pipeline 2
+#### Transformation Recipe Pipeline 2
 Here we just reorder the transformation performed in Pipeline 1, naturally leading to a different matrix output. 
 
 ```python
