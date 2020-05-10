@@ -4,13 +4,13 @@
 
 The first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, [Mihaela van der Schaar](https://www.turing.ac.uk/people/researchers/mihaela-van-der-schaar), Jinsung Yoon, Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
 
-As of now, this packakge is catering for time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This packaage can still be used for other tasks, but some functions won't apply.
+As of now, this packakge is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply.
 
 ```python
 datasets = [org, gen_1, gen_2]
 ```
 
-Installation and important modules:
+Installation and import modules:
 
 ```
 pip install datagene
@@ -24,12 +24,18 @@ from datagene import dist_utilities as distu   # Distance Utilities
 from datagene import vis_utilities as visu     # Visualisation Utility Functions
 ```
 
+As of now, you would also have to install the following package, until we find an alternative
+
+``
+pip install git+git://github.com/FirmAI-Research/ecopy.git
+``
+
 
 &nbsp;
 
 # Transformation Recipes
 
-*You have the ability to work with 2D and 3D generated data. This notebook will work with a 3D time series array. Data has to organised as samples, times steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
+*You have the ability to work with 2D and 3D generated data. This notebook will work with a 3D time series array. Data has to organised as samples, time steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
 
 
 This first recipe uses six arbitary transformations to identify the similarity of datasets. As an analogy, imagine you're importing similar looking oranges from two different countries, and you want to see whether there is a difference in the constitution of these oranges compared to the local variety your customers have gotten used to. To do that you might follow a six step process, first you press the oranges for pulp, then you boil the pulp, you then maybe sift the pulp out and drain the juice, you add apple juice to the pulp, and then add an organge concentrate back to the pulp, you then dry the concoction on a translucent petri dish and shine light through the petri dish to identify differences in patterns between the organges using various distance metrics. You might want to do the process multiple times and establish an average and possibly even a significance score. The transformation part, is the process we put the data through to be ready for similarity calculations.
@@ -118,7 +124,7 @@ Examples:
 ---------
 
 #### Example Transformation Recipe Pipeline 1
-There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use on transformation at a time. Your architecture should be emperically driven. For similarity statistics, that generally means developing a knowingly bad and knowingly good dataset, and comparing them using a range of transformations and distance metrics to identify which methods best captures their difference. We have developed a very simply pipeline that can take in multiple datasets to perform multiple operations resulting in an encoded-decomposition for similarity statistics. In the future, we will add more tranformation's to this pipeline to help with swapping axes, transpositions, and other matrix operations.
+There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use one transformation at a time. Your architecture should be emperically driven. That generally means developing a knowingly bad and knowingly good synthetic dataset, and comparing them using a range of transformations and distance metrics to identify which methods best capture their difference. We have developed a very simple pipeline that can take in many datasets to perform multiple operations resulting in a range of encoded-decomposition on which various similarity statistics can be calculated. In the future, we will add more tranformations to this pipeline to help with array operations like swapping axes, transpositions, and others.
 
 ```python
 
@@ -136,7 +142,7 @@ recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1(datasets)
 ```
 
 #### Example Transformation Recipe Pipeline 2
-Here we just reorder the transformation performed in Pipeline 1, naturally leading to a completely different matrix output. 
+Here we just reorder the transformation performed in Pipeline 1, naturally leading to a different matrix output. 
 
 ```python
 def transf_recipe_2(arr):
@@ -155,11 +161,11 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 # Distance Recipes
 
-A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. A few of these methods are novel and new to academia, and would require some benchmarking in the future, they have been signed (NV). In the future, this package would be branched out to look into privacy measurements too.
+A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. A few of these methods are novel and new to academia, and would require some benchmarking in the future; they have been signed (NV). In the future, this package would be branched out to look into privacy measurements aswell.
 
 Model (Mixed)
 ------------
-The model includes a transformation from tensor/matrix (the input data) to the shapley values of the same shape, as well as tranformations to prediction vectors, and feature rank vectors. 
+The model includes a transformation from tensor/matrix (the input data) to the local shapley values of the same shape, as well as tranformations to prediction vectors, and feature rank vectors. 
 
 ```dist.regression_metrics()``` - Prediction errors metrics.
 
@@ -172,7 +178,7 @@ The model includes a transformation from tensor/matrix (the input data) to the s
 
 Matrix
 -----------
-Transformations like Gramian Angular Field, Recurrence Plots, Joint Recurrence Plot , Markov Transition Field, returns an image from time series. This makes them perfect candidates for image similarity measures. From this matrix section, only the first three measures, take in images, they have been tagged (IMG). From what I know, image similarity metrics have not yet been used on 3D time series data. Furthermore, correlation heatmaps, and 2D KDE plots, and a few others, also work fairly well with image similarity metrics. 
+Transformations like Gramian Angular Field, Recurrence Plots, Joint Recurrence Plot, and Markov Transition Field, returns an image from time series. This makes them perfect candidates for image similarity measures. From this matrix section, only the first three measures, take in images, they have been tagged (IMG). From what I know, image similarity metrics have not yet been used on 3D time series data. Furthermore, correlation heatmaps, and 2D KDE plots, and a few others, also work fairly well with image similarity metrics. 
 
 ```dist.ssim_grey()``` - Structural grey image similarity index. (IMG)
 
@@ -206,7 +212,7 @@ Vector
 Examples
 ---------------
 
-Statistical feature rank correlation.
+**Statistical feature rank correlation**
 
 ```python
 dist.boot_stat(gen_org_arr,org_org_arr)
@@ -219,7 +225,7 @@ Original: 0.30857142857142855, Generated: 0.15428571428571428, Difference: 0.154
 (0.8877545314489291, 0.3863818038855802)
 ```
 
-Statistical feature divergence significance.
+**Statistical feature divergence significance.**
 
 
 ```python
