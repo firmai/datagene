@@ -226,6 +226,8 @@ Close      0.18862
 Adj_Close  0.18347
 ```
 
+Structural grey image similarity.
+
 ```python
 dist.ssim_grey(gray_org,gray_gen_1)
 ```
@@ -235,6 +237,7 @@ Image similarity: 0.3092467224082394
 Image similarity: 0.21369506433133445
 ```
 
+ Histogram image similarity.
 ```python
 dist.image_histogram_similarity(visu.array_3d_to_rgb_image(rp_sff_3d_org), visu.array_3d_to_rgb_image(rp_sff_3d_gen_1) ))
 ```
@@ -243,16 +246,19 @@ Recurrence
 25.758089344255847
 17.455374649851166
 ```
+Hash image similarity.
 
+Distance matrix hypothesis tests.
 ```python
 pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
 ```
-
 
 ```
 {'mantel': 0.0, 'procrustes': 0.0, 'rda': -0.0}
 {'mantel': 0.5995869421294606, 'procrustes': 0.4925792204150222, 'rda': 0.9999999999802409}
 ```
+
+Non-parametric entropy multiples.
 
 ```python
 diss_np_one = dist.entropy_dissimilarity(org.var(axis=0),gen_1.var(axis=0)); print(diss_np_one)
@@ -261,7 +267,7 @@ diss_np_one = dist.entropy_dissimilarity(org.var(axis=0),gen_1.var(axis=0)); pri
 OrderedDict([('incept_multi', 0.00864), ('cent_multi', 0.25087), ('ctc_multi', 28.56361), ('corexdc_multi', 0.14649), ('ctcdc_mult', 0.15839), ('mutual_mult', 0.32102), ('minfo', 0.91559)])
 ```
 
-
+Statistical and geometrics distance measures.
 ```python
 dist.matrix_distance(recipe_2_org,recipe_2_gen_1)
 ```
@@ -295,6 +301,8 @@ OrderedDict([('correlation', 0.00039),
              ('canberra', 4.44534)])
 ```
 
+PCA extraction variance explained.
+
 ```python
 dist.pca_extract_explain(np.sort(y_pred_org.mean(axis=1)),np.sort(y_pred_gen_1.mean(axis=1)))
 ```
@@ -305,6 +313,8 @@ PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.
 (0.07666231511948172, 0.9996278922766885, 8.384146445855097e-14)
 ```
 
+Statistical and geometric distance measures. (vect dist>_
+
 ```
 braycurtis 	canberra 	correlation 	cosine 	dice 	euclidean 	kulsinski 	manhattan 	rogerstanimoto 	russellrao 	sokalmichener 	sokalsneath 	sqeuclidean 	yule 	ks_statistic
 Iteration_0 	0.101946 	318.692930 	0.030885 	0.019464 	0.571581 	1.571925 	0.941558 	28.962261 	0.311882 	0.930761 	0.311882 	0.842188 	2.470950 	0.283410 	0.222096
@@ -314,18 +324,20 @@ Iteration_3 	0.094278 	304.127560 	0.028063 	0.017154 	0.535805 	1.667062 	0.928
 Iteration_4 	0.097794 	325.415987 	0.029636 	0.018002 	0.566395 	1.565529 	0.937156 	29.816744 	0.328361 	0.924811 	0.328361 	0.839357 	2.450881 	0.299397 	0.242597
 ```
 
+Geometric distribution distances feature map.
+
 ```python
 vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataFrame(org.mean(axis=(1)),columns=f_names),pd.DataFrame(gen_1.mean(axis=(1)),columns=f_names),f_names)
 ```
 
 ```
- 	Open 	High 	Low 	Close 	Adj_Close 	Volume
+             Open 	High 	Low 	Close 	Adj_Close 	Volume
 braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
 canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
 correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
-cosine 	0.328764 	0.307929 	0.307298 	0.309757 	0.304822 	0.538475
-dice 	-0.228367 	-0.245702 	-0.216325 	-0.236500 	-0.246685 	-0.486245
 ```
+
+Curve comparison metrics.
 
 ```python
 dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
@@ -340,6 +352,8 @@ dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
  'Partial Curve Mapping': 159.14488}
  ```
  
+Vector statistical tests.
+
 ```python
  dict_sta, dict_pval  = dist.vector_hypotheses(matrix_org[:, 1],matrix_gen_1[:, 1])
 ```
