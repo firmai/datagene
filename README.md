@@ -422,14 +422,21 @@ OrderedDict([('correlation', 0.00039),
 
 #### **PCA extraction variance explained**
 
+The vector extraction function calculates a large number of time series characteristics. These are calculated for multiple bootsrapped iterations to for a matrix, this matrix is the decomposed to X PCA components of which the PCA error, correlation, and p-value is calculated. Currently the transformation has about 30 different time series characteristics like ```abs_energy```, ```mean_abs_change```, ```mean_second_derivative_central```, ```partial_autocorrelation```, ```augmented_dickey_fuller```, ```gskew```, and ```stetson_mean```.
+
 ```python
 dist.pca_extract_explain(np.sort(y_pred_org.mean(axis=1)),np.sort(y_pred_gen_1.mean(axis=1)))
+dist.pca_extract_explain(np.sort(y_pred_org.mean(axis=1)),np.sort(y_pred_gen_2.mean(axis=1)))
 ```
 
 ```
 PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.384146445855097e-14
 
 (0.07666231511948172, 0.9996278922766885, 8.384146445855097e-14)
+
+PCA Error: 0.028902437880890735, PCA Correlation: 0.9999364499384681, p-value: 7.135244167278149e-17
+
+(0.028902437880890735, 0.9999364499384681, 7.135244167278149e-17)
 ```
 
 #### **Statistical and geometric distance measures**
