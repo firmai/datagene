@@ -19,13 +19,13 @@ This first recipe uses six arbitary transformations to identify the similarity o
 
 
 From Tesseract:
-
+---------------
 ```tran.mps_decomp_4_to_2()```
 
 &nbsp;
 
 From Tensor:
-
+-----------------
 ```tran.gaf_encode_3_to_4()``` - A Gramian Angular Field is an image obtained from a time series, representing some temporal correlation between each time point. 
 
 ```tran.mrp_encode_3_to_4()``` - Recurrence Plots are a way to visualize the behavior of a trajectory of a dynamical system in phase space.
@@ -44,37 +44,36 @@ From Tensor:
 
 ```tran.var_3_to_2()``` - Variation aggregation at the sample level.
 
-```tran.tucker_decomp_3_to_2()```
+```tran.tucker_decomp_3_to_2()``` - Tucker decomposition decomposes a tensor into a set of matrices and one small core tensor
 
-```tran.parafac_decomp_3_to_2()```
+```tran.parafac_decomp_3_to_2()``` - The PARAFAC decommposition may be regarded as a generalization of the matrix singular value decomposition, but for tensors.
 
-```tran.pca_decomp_3_to_2()```
+```tran.pca_decomp_3_to_2()``` - Long to Wide Array Conversion with a PCA Decomposition. 
 
 &nbsp;
 
 From Matrix:
+------------
 
-```tran.rp_encode_2_to_3()```
+```tran.rp_encode_2_to_3()``` - Recurrence Plots are a way to visualize the behavior of a trajectory of a dynamical system in phase space.
 
-```tran.gaf_encode_2_to_3()```
+```tran.gaf_encode_2_to_3()``` - A Gramian Angular Field is an image obtained from a time series, representing some temporal correlation between each time point. 
 
-```tran.mtf_encode_2_to_3()```
+```tran.mtf_encode_2_to_3()``` - A Markov Transition Field is an image obtained from a time series, representing a field of transition probabilities for a discretized time series.
 
-```tran.pca_decomp_2_to_2()```
+```tran.pca_decomp_2_to_2()``` - Principal component analysis (PCA) is a mathematical algorithm that reduces the dimensionality of the data while retaining most of the variation in the data set
 
-```tran.pca_decomp_2_to_2()```
+```tran.svd_decomp_2_to_2()``` - Singular value decomposition (SVD) is a factorization of a real or complex matrix that generalizes the eigendecomposition of a square normal matrix to any
 
-```tran.svd_decomp_2_to_2()```
+```tran.qr_decomp_2_to_2()``` - QR decomposition (also called the QR factorization) of a matrix is a decomposition of the matrix into an orthogonal matrix and a triangular matrix. 
 
-```tran.qr_decomp_2_to_2()```
+```tran.lik_kernel_2_to_2()``` - A special case of polynomial_kernel with ```degree=1``` and ```coef0=0```.
 
-```tran.lik_kernel_2_to_2()```
+```tran.cos_kernel_2_to_2()``` - The chi-squared kernel is a very popular choice for training non-linear SVMs in computer vision applications.
 
-```tran.cos_kernel_2_to_2()```
+```tran.pok_kernel_2_to_2()``` - The function polynomial_kernel computes the degree-d polynomial kernel between two vectors. 
 
-```tran.pok_kernel_2_to_2()```
-
-```tran.lak_kernel_2_to_2()```
+```tran.lak_kernel_2_to_2()``` - The function laplacian_kernel is a variant on the radial basis function kernel.
 
 ```tran.cov_2_to_2()```
 
