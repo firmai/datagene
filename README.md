@@ -11,6 +11,7 @@ datasets = [org, gen_1, gen_2]
 ```
 
 ### Transformation Recipes
+---------------
 
 *You have the ability to work with 2D and 3D generated data. This notebook will work with a 3D time series array. Data has to organised as samples, times steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
 
@@ -137,6 +138,7 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 ```
 
 ### Distance Recipes
+---------------
 
 A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. The only tensor (3D) distance measure available 
 
