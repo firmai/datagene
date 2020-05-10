@@ -19,12 +19,14 @@ This first recipe uses six arbitary transformations to identify the similarity o
 
 
 From Tesseract:
+
 ---------------
 ```tran.mps_decomp_4_to_2()``` - Used as the de facto standard for the representation of one-dimensional quantum many body states.
 
 
 
 From Tensor:
+
 -----------------
 ```tran.gaf_encode_3_to_4()``` - A Gramian Angular Field is an image obtained from a time series, representing some temporal correlation between each time point. 
 
