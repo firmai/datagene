@@ -41,7 +41,6 @@ From Tesseract:
 ```tran.mps_decomp_4_to_2()``` - Matrix-product state are as the de facto standard for the representation of one-dimensional quantum many body states.
 
 
-
 From Tensor:
 -----------------
 
@@ -173,12 +172,13 @@ The model includes a transformation from tensor/matrix (the input data) to the s
 
 Matrix
 -----------
+Transformations like Gramian Angular Field, Recurrence Plots, Joint Recurrence Plot , Markov Transition Field, returns an image from time series. This makes them perfect candidates for image similarity measures. From this matrix section, only the first three measures, take in images, they have been tagged (IMG). From what I know, image similarity metrics have not yet been used on 3D time series data. Furthermore, correlation heatmaps, and 2D KDE plots, and a few others, also work fairly well with image similarity metrics. 
 
-```dist.ssim_grey()``` - Structural grey image similarity.
+```dist.ssim_grey()``` - Structural grey image similarity index. (IMG)
 
-```dist.image_histogram_similarity()``` - Histogram image similarity.
+```dist.image_histogram_similarity()``` - Histogram image similarity. (IMG)
 
-```dist.hash_simmilarity()``` - Hash image similarity.
+```dist.hash_simmilarity()``` - Hash image similarity. (IMG)
 
 ```dist.distance_matrix_tests()``` - Distance matrix hypothesis tests. (NV)
 
@@ -347,7 +347,7 @@ vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataF
 ```
 
 ```
-             Open 	High 	Low 	Close 	Adj_Close 	Volume
+                  Open 	High 	Low 	Close 	Adj_Close 	Volume
 braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
 canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
 correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
