@@ -1,2 +1,2 @@
-# datagene
- Data Transformation and Similarity Comparison Statistics
+# DataGene - Data Transformations and Similarity Statistics
+
