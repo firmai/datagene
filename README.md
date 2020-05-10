@@ -50,7 +50,6 @@ From Tensor:
 
 ```tran.pca_decomp_3_to_2()``` - Long to Wide Array Conversion with a PCA Decomposition. 
 
-&nbsp;
 
 From Matrix:
 ------------
@@ -61,7 +60,7 @@ From Matrix:
 
 ```tran.mtf_encode_2_to_3()``` - A Markov Transition Field is an image obtained from a time series, representing a field of transition probabilities for a discretized time series.
 
-```tran.pca_decomp_2_to_2()``` - Principal component analysis (PCA) is a mathematical algorithm that reduces the dimensionality of the data while retaining most of the variation in the data set
+```tran.pca_decomp_2_to_2()``` - Principal component analysis (PCA) is a mathematical algorithm that reduces the dimensionality of the data while retaining most of the variation in the data set.
 
 ```tran.svd_decomp_2_to_2()``` - Singular value decomposition (SVD) is a factorization of a real or complex matrix that generalizes the eigendecomposition of a square normal matrix to any
 
@@ -75,27 +74,27 @@ From Matrix:
 
 ```tran.lak_kernel_2_to_2()``` - The function laplacian_kernel is a variant on the radial basis function kernel.
 
-```tran.cov_2_to_2()```
+```tran.cov_2_to_2()``` - A covariance matrix is a square matrix giving the covariance between each pair of elements of a given random vector.
 
-```tran.corr_2_to_2()```
+```tran.corr_2_to_2()``` - A correlation matrix is a table showing correlation coefficients between sets of variables.
 
-```tran.hist_2d_2_to_2()```
+```tran.hist_2d_2_to_2()``` - 2D histograms are useful when you need to analyse the relationship between 2 numerical variables that have a large number of values.
 
-```tran.pwd_2_to_2()```
+```tran.pwd_2_to_2()``` - Computes the distance matrix from a vector array X and optional Y.
 
-```tran.prp_encode_2_to_2()```
+```tran.prp_encode_2_to_2()``` - Recurrence Plots are a way to visualize the behavior of a trajectory of a dynamical system in phase space.
 
-```tran.pca_decomp_2_to_1()```
+```tran.pca_decomp_2_to_1()``` - Principal component analysis (PCA) is a mathematical algorithm that reduces the dimensionality of the data while retaining most of the variation in the data set.
 
-&nbsp;
 
 From Vector:
+---------
 
-```tran.sig_encode_1_to_2()```
+```tran.sig_encode_1_to_2()``` - Signature is a transformation of a path into a sequence that encapsulates summaries of the path.
 
-```tran.vect_extract_1_to_1()```
+```tran.vect_extract_1_to_1()``` -  Calculates a large number of time series characteristics.
 
-```tran.autocorr_1_to_1()```
+```tran.autocorr_1_to_1()``` - Autocorrelation is the correlation of a signal with a delayed copy of itself as a function of delay. 
 
 
 ##### Example Transformation Recipe Pipeline 1
@@ -133,10 +132,11 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 ```
 
-#### Distance Recipes
+### Distance Recipes
 
 
 Tensor/Matrix
+------------
 
 ```dist.regression_metrics()``` - prediction errors metrics
 
@@ -148,6 +148,7 @@ Tensor/Matrix
 
 
 Matrix
+-----------
 
 ```dist.ssim_grey()``` - structural grey image similarity
 
@@ -163,6 +164,7 @@ Matrix
 
 
 Vector
+------------
 
 ```dist.pca_extract_explain()``` - pca extraction variance explained
 
@@ -177,7 +179,7 @@ Vector
 ```dist.vector_hypotheses()``` - vector statistical tests
 
 
-
+#### Examples
 
 ```python
 dist.boot_stat(gen_org_arr,org_org_arr)
