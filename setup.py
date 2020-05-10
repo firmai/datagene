@@ -4,7 +4,7 @@ import sys
 
 
 setup(name='datagene',
-      version='0.0.2',
+      version='0.0.3',
       description='Data Comparison Toolbox with Transformation and Similarity Analysis',
       url='https://github.com/firmai/datagene',
       author='snowde',
