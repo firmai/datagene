@@ -96,6 +96,8 @@ From Vector:
 
 ```tran.autocorr_1_to_1()``` - Autocorrelation is the correlation of a signal with a delayed copy of itself as a function of delay. 
 
+Examples:
+---------
 
 ##### Example Transformation Recipe Pipeline 1
 There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use on transformation at a time. Your architecture should be emperically driven. For similarity statistics that generally means traning a knowingly bad and knowingly good dataset, and seeing which transformations plus distance metrics best captures their difference.
@@ -134,52 +136,57 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 ### Distance Recipes
 
+A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. The only tensor (3D) distance measure available 
 
-Tensor/Matrix
+Model (Mixed)
 ------------
+The model includes a transformation from tensor/matrix (the input data) to the shapley values of the same format, to prediction vector values, and feature rank vectors. 
 
-```dist.regression_metrics()``` - prediction errors metrics
+```dist.regression_metrics()``` - Prediction errors metrics.
 
-```mod.shapley_rank()``` + ```dist.boot_stat()``` - statistical feature rank correlation
+```mod.shapley_rank()``` + ```dist.boot_stat()``` - Statistical feature rank correlation.
 
-```mod.shapley_rank()``` - feature direction divergence
+```mod.shapley_rank()``` - Feature direction divergence.
 
-```mod.shapley_rank()``` + ```dist.stat_pval()``` - statistical feature divergence significance
+```mod.shapley_rank()``` + ```dist.stat_pval()``` - Statistical feature divergence significance.
 
 
 Matrix
 -----------
 
-```dist.ssim_grey()``` - structural grey image similarity
+```dist.ssim_grey()``` - Structural grey image similarity.
 
-```dist.image_histogram_similarity()``` - histogram image similarity
+```dist.image_histogram_similarity()``` - Histogram image similarity.
 
-```dist.hash_simmilarity()``` - hash image similarity
+```dist.hash_simmilarity()``` - Hash image similarity.
 
-```dist.distance_matrix_tests()``` - distance matrix hypothesis tests
+```dist.distance_matrix_tests()``` - Distance matrix hypothesis tests.
 
-```dist.entropy_dissimilarity()``` - non-parametric entropy multiples
+```dist.entropy_dissimilarity()``` - Non-parametric entropy multiples.
 
-```dist.matrix_distance()``` - statistical and geometrics distance measures
+```dist.matrix_distance()``` - Statistical and geometrics distance measures.
 
 
 Vector
 ------------
 
-```dist.pca_extract_explain()``` - pca extraction variance explained
+```dist.pca_extract_explain()``` - PCA extraction variance explained.
 
-```dist.vector_distance()``` - statistical and geometric distance measures
+```dist.vector_distance()``` - Statistical and geometric distance measures.
 
-```dist.distribution_distance_map()``` - Geometric Distribution Distances Feature Map
+```dist.distribution_distance_map()``` - Geometric distribution distances feature map.
 
-```dist.curve_metrics()``` - curve comparison metrics
+```dist.curve_metrics()``` - Curve comparison metrics.
 
-```dist.curve_kde_map()``` - dist.curve_metrics kde feature map
+```dist.curve_kde_map()``` - dist.curve_metrics kde feature map.
 
-```dist.vector_hypotheses()``` - vector statistical tests
+```dist.vector_hypotheses()``` - Vector statistical tests.
 
 
-#### Examples
+Examples
+---------------
+
+###### Statistical feature rank correlation.
 
 ```python
 dist.boot_stat(gen_org_arr,org_org_arr)
@@ -191,6 +198,9 @@ Original: 0.30857142857142855, Generated: 0.15428571428571428, Difference: 0.154
 
 (0.8877545314489291, 0.3863818038855802)
 ```
+
+###### Statistical feature divergence significance.
+
 
 ```python
 un_var_t, df_pval = dist.stat_pval(single_org_total,single_gen_total)
