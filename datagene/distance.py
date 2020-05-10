@@ -35,7 +35,7 @@ import pandasvault as pv
 ##==============================================================================================
 
 
-def pred_scores(pred_list=[],name_list=[],valid=None):
+def regression_metrics(pred_list=[],name_list=[],valid=None):
   dict_metric = {}
   for pred, name in zip(pred_list,name_list):
     dict_metric[name] = {}
@@ -51,7 +51,7 @@ def pred_scores(pred_list=[],name_list=[],valid=None):
 
 
 
-def bootstat(arr_mean, arr_mean_org):
+def boot_stat(arr_mean, arr_mean_org):
   org_mean = statistics.mean(arr_mean_org)
   gen_mean = statistics.mean(arr_mean)
   org_gen_diff = org_mean - gen_mean
@@ -108,7 +108,7 @@ def get_thumbnail(image, size=(128,128), stretch_to_fit=False, greyscale=False):
         image = image.convert("L")  # Convert it to grayscale.
     return image
   
-def image_similarity_histogram_via_pil(image1, image2):
+def image_histogram_similarity(image1, image2):
 
  
     image1 = get_thumbnail(image1)
@@ -136,7 +136,7 @@ def _hamming(h1, h2):
         d &= d - 1
     return h
 
-def phash_simmilarity(img1,img2):
+def hash_simmilarity(img1,img2):
     
     hash1 = _avhash(img1)
     hash2 = _avhash(img2)
@@ -154,7 +154,7 @@ def simple_diff_ratio_1(real, fake, mult=1):
   return val 
 
 
-def dist_stats(dist_org,dist_gen):
+def distance_matrix_tests(dist_org,dist_gen):
   pvalue = {}
   stat ={}
   ### The mantel test would actually work very well for shapley values (output that is the same)
@@ -181,7 +181,7 @@ def dist_stats(dist_org,dist_gen):
 
 
 ## i have to redo this completley do the minus one
-def dissimilarity_multiples_np(df_org_out,df_gen_out):
+def entropy_dissimilarity(df_org_out,df_gen_out):
   d_m_m = OrderedDict()
   df_org_out = pd.DataFrame(df_org_out)
   df_gen_out = pd.DataFrame(df_gen_out)
@@ -245,7 +245,6 @@ def matrix_distance(a,b, skip_bhat=False):
 
 
 
-
 ### Vectors
 
 
@@ -295,7 +294,7 @@ def pca_variance(vect_org_df_sc, vect_gen_df_sc):
 
     return pca_error, pca_corr, p_value
 
-def build_frame(y_pred_org,y_pred_gen,prop=0.1):
+def pca_extract_explain(y_pred_org,y_pred_gen,prop=0.1):
   _, vect_org_df_sc, _, vect_gen_df_sc = bootstrapped_frame(y_pred_org,y_pred_gen,prop)
 
   # Some Cleaning Operations
@@ -338,7 +337,7 @@ def vector_distance(a,b):
 
   return dict_dist
 
-def distance_vector(probs_org_1, probs_org_2):
+def vector_distance_boots(probs_org_1, probs_org_2):
   vect_org_dist = {}
   for iteration in range(100):
     choice = np.random.choice(len(probs_org_1), int(len(probs_org_1)*.01), replace=False)
@@ -398,7 +397,7 @@ def distance_funct_kde(df_1, df_2, X):
   frame_all.columns = X
   return  frame_all
 
-def distance_comp(df_org_out,df_gen_out,X):
+def distribution_distance_map(df_org_out,df_gen_out,X):
   frac = 0.5
   vect_org_dens_dist = distance_funct_kde(df_org_out.sample(frac=frac).astype('double'),df_org_out.sample(frac=frac).astype('double'), X)
   vect_gen_dens_dist = distance_funct_kde(df_gen_out.astype('double'),df_org_out.astype('double'), X)
@@ -471,7 +470,7 @@ def dict_curve(matrix_org_s,matrix_gen_s):
   #c_dict["KS Statistic X x Y"] = round(ks_2samp(matrix_org_s[:,1]*matrix_org_s[:,0], matrix_gen_s[:,1]*matrix_gen_s[:,1])[0],5)
   return c_dict
 
-def curve_funct_kde(df_1, df_2, X, frac=0.01):
+def curve_kde_map(df_1, df_2, X, frac=0.01):
 
   for en, col in enumerate(X):
     print(col)
