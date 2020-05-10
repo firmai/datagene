@@ -160,7 +160,7 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 For example:
 
-```
+```python
 import numpy as np
 borg = np.random.rand(2,10,4)
 bgen_1 = np.random.rand(2,10,4)
