@@ -16,7 +16,7 @@ Installation and important modules:
 pip install datagene
 ```
 
-```
+```python
 from datagene import distance as dist          # Distance Functions
 from datagene import transform as tran         # Transformation Functions
 from datagene import mod_utilities as mod      # Model Development Utilities
@@ -32,13 +32,13 @@ from datagene import vis_utilities as visu     # Visualisation Utility Functions
 *You have the ability to work with 2D and 3D generated data. This notebook will work with a 3D time series array. Data has to organised as samples, times steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
 
 
-This first recipe uses six arbitary transformations to identify the similarity of datasets. As an analogy, imagine you importing similar looking oranges from two different countries, and you want to see whether there is a difference in the constitution of these oranges. To do that you might follow a six step process, first you press the oranges for pulp, then you boil the pulp, you then maybe sift the pulp out and drain the juice, you add apple juice to the pulp, and then add an organge concentrate back to the pulp, you then dry the concoctions on a translucent petri dish and shine light through the petri dish to identify differences in patterns using various distance metrics. You might want to do the process multiple times and establish an average and possibly even a significance score. The transformation part, is the process we put the data through to be ready for similarity calculations.
+This first recipe uses six arbitary transformations to identify the similarity of datasets. As an analogy, imagine you're importing similar looking oranges from two different countries, and you want to see whether there is a difference in the constitution of these oranges compared to the local variety your customers have gotten used to. To do that you might follow a six step process, first you press the oranges for pulp, then you boil the pulp, you then maybe sift the pulp out and drain the juice, you add apple juice to the pulp, and then add an organge concentrate back to the pulp, you then dry the concoction on a translucent petri dish and shine light through the petri dish to identify differences in patterns between the organges using various distance metrics. You might want to do the process multiple times and establish an average and possibly even a significance score. The transformation part, is the process we put the data through to be ready for similarity calculations.
 
 
 From Tesseract:
 ---------------
 
-```tran.mps_decomp_4_to_2()``` - Used as the de facto standard for the representation of one-dimensional quantum many body states.
+```tran.mps_decomp_4_to_2()``` - Matrix-product state are as the de facto standard for the representation of one-dimensional quantum many body states.
 
 
 
@@ -51,7 +51,7 @@ From Tensor:
 
 ```tran.mtf_encode_3_to_4()``` - A Markov Transition Field is an image obtained from a time series, representing a field of transition probabilities for a discretized time series.
 
-```tran.mps_decomp_3_to_2()``` - Used as the de facto standard for the representation of one-dimensional quantum many body states.
+```tran.mps_decomp_3_to_2()``` - Matrix-product state are as the de facto  standard for the representation of one-dimensional quantum many body states.
 
 ```tran.jrp_encode_3_to_3()``` - A joint recurrence plot (JRP) is a graph which shows all those times at which a recurrence in one dynamical system occurs simultaneously with a recurrence in a second dynamical system
 
@@ -65,9 +65,9 @@ From Tensor:
 
 ```tran.tucker_decomp_3_to_2()``` - Tucker decomposition decomposes a tensor into a set of matrices and one small core tensor
 
-```tran.parafac_decomp_3_to_2()``` - The PARAFAC decommposition may be regarded as a generalization of the matrix singular value decomposition, but for tensors.
+```tran.parafac_decomp_3_to_2()``` - The PARAFAC decomposition may be regarded as a generalization of the matrix singular value decomposition, but for tensors.
 
-```tran.pca_decomp_3_to_2()``` - Long to Wide Array Conversion with a PCA Decomposition. 
+```tran.pca_decomp_3_to_2()``` - Long to wide array conversion with a PCA Decomposition. 
 
 
 From Matrix:
@@ -81,7 +81,7 @@ From Matrix:
 
 ```tran.pca_decomp_2_to_2()``` - Principal component analysis (PCA) is a mathematical algorithm that reduces the dimensionality of the data while retaining most of the variation in the data set.
 
-```tran.svd_decomp_2_to_2()``` - Singular value decomposition (SVD) is a factorization of a real or complex matrix that generalizes the eigendecomposition of a square normal matrix to any
+```tran.svd_decomp_2_to_2()``` - Singular value decomposition (SVD) is a factorization of a real or complex matrix that generalizes the eigendecomposition of a square normal matrix.
 
 ```tran.qr_decomp_2_to_2()``` - QR decomposition (also called the QR factorization) of a matrix is a decomposition of the matrix into an orthogonal matrix and a triangular matrix. 
 
@@ -109,9 +109,9 @@ From Matrix:
 From Vector:
 ---------
 
-```tran.sig_encode_1_to_2()``` - Signature is a transformation of a path into a sequence that encapsulates summaries of the path.
+```tran.sig_encode_1_to_2()``` - The signature method is a transformation of a path into a sequence that encapsulates summaries of the path.
 
-```tran.vect_extract_1_to_1()``` -  Calculates a large number of time series characteristics.
+```tran.vect_extract_1_to_1()``` -  The vector extraction function calculates a large number of time series characteristics.
 
 ```tran.autocorr_1_to_1()``` - Autocorrelation is the correlation of a signal with a delayed copy of itself as a function of delay. 
 
@@ -119,7 +119,7 @@ Examples:
 ---------
 
 #### Example Transformation Recipe Pipeline 1
-There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use on transformation at a time. Your architecture should be emperically driven. For similarity statistics that generally means traning a knowingly bad and knowingly good dataset, and seeing which transformations plus distance metrics best captures their difference.
+There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use on transformation at a time. Your architecture should be emperically driven. For similarity statistics, that generally means developing a knowingly bad and knowingly good dataset, and comparing them using a range of transformations and distance metrics to identify which methods best captures their difference. We have developed a very simply pipeline that can take in multiple datasets to perform multiple operations resulting in an encoded-decomposition for similarity statistics. In the future, we will add more tranformation's to this pipeline to help with swapping axes, transpositions, and other matrix operations.
 
 ```python
 
@@ -137,7 +137,7 @@ recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1(datasets)
 ```
 
 #### Example Transformation Recipe Pipeline 2
-Here we just reorder the transformation performed in Pipeline 1.
+Here we just reorder the transformation performed in Pipeline 1, naturally leading to a completely different matrix output. 
 
 ```python
 def transf_recipe_2(arr):
@@ -156,19 +156,19 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 # Distance Recipes
 
-A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. The only tensor (3D) distance measure available 
+A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. A few of these methods are novel and new to academia, and would require some benchmarking in the future, they have been signed (NV).
 
 Model (Mixed)
 ------------
-The model includes a transformation from tensor/matrix (the input data) to the shapley values of the same format, to prediction vector values, and feature rank vectors. 
+The model includes a transformation from tensor/matrix (the input data) to the shapley values of the same shape, as well as tranformations to prediction vectors, and feature rank vectors. 
 
 ```dist.regression_metrics()``` - Prediction errors metrics.
 
-```mod.shapley_rank()``` + ```dist.boot_stat()``` - Statistical feature rank correlation.
+```mod.shapley_rank()``` + ```dist.boot_stat()``` - Statistical feature rank correlation. 
 
-```mod.shapley_rank()``` - Feature direction divergence.
+```mod.shapley_rank()``` - Feature direction divergence. (NV)
 
-```mod.shapley_rank()``` + ```dist.stat_pval()``` - Statistical feature divergence significance.
+```mod.shapley_rank()``` + ```dist.stat_pval()``` - Statistical feature divergence significance. (NV)
 
 
 Matrix
@@ -180,9 +180,9 @@ Matrix
 
 ```dist.hash_simmilarity()``` - Hash image similarity.
 
-```dist.distance_matrix_tests()``` - Distance matrix hypothesis tests.
+```dist.distance_matrix_tests()``` - Distance matrix hypothesis tests. (NV)
 
-```dist.entropy_dissimilarity()``` - Non-parametric entropy multiples.
+```dist.entropy_dissimilarity()``` - Non-parametric entropy multiples. (NV)
 
 ```dist.matrix_distance()``` - Statistical and geometrics distance measures.
 
@@ -190,15 +190,15 @@ Matrix
 Vector
 ------------
 
-```dist.pca_extract_explain()``` - PCA extraction variance explained.
+```dist.pca_extract_explain()``` - PCA extraction variance explained. (NV)
 
 ```dist.vector_distance()``` - Statistical and geometric distance measures.
 
 ```dist.distribution_distance_map()``` - Geometric distribution distances feature map.
 
-```dist.curve_metrics()``` - Curve comparison metrics.
+```dist.curve_metrics()``` - Curve comparison metrics. (NV)
 
-```dist.curve_kde_map()``` - dist.curve_metrics kde feature map.
+```dist.curve_kde_map()``` - dist.curve_metrics kde feature map. (NV)
 
 ```dist.vector_hypotheses()``` - Vector statistical tests.
 
