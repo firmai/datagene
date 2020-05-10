@@ -20,9 +20,9 @@ This first recipe uses six arbitary transformations to identify the similarity o
 
 From Tesseract:
 ---------------
-```tran.mps_decomp_4_to_2()```
+```tran.mps_decomp_4_to_2()``` - Used as the de facto standard for the representation of one-dimensional quantum many body states.
 
-&nbsp;
+
 
 From Tensor:
 -----------------
