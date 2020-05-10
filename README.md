@@ -329,7 +329,7 @@ PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.
 (0.07666231511948172, 0.9996278922766885, 8.384146445855097e-14)
 ```
 
-Statistical and geometric distance measures. (vect dist>_
+Statistical and geometric distance measures. (vect dist)
 
 ```
 braycurtis	canberra	correlation	  cosine	dice	       euclidean	...
@@ -337,7 +337,7 @@ Iteration_0	0.101946	318.692930	0.030885	0.019464	0.571581	...
 Iteration_1	0.097229	306.932707	0.028121	0.017263	0.556409	...
 Iteration_2	0.102882	314.205121	0.031078	0.019340	0.602853	...
 Iteration_3	0.094278	304.127560	0.028063	0.017154	0.535805	...
-Iteration_4	0.097794	325.415987	0.029636	0.018002	0.566395  ...
+Iteration_4	0.097794	325.415987	0.029636	0.018002	0.566395    ...
 ```
 
 Geometric distribution distances feature map.
@@ -347,7 +347,7 @@ vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataF
 ```
 
 ```
-                  Open 	High 	Low 	Close 	Adj_Close 	Volume
+                  Open 	    High 	    Low 	    Close 	    Adj_Close 	    Volume
 braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
 canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
 correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
