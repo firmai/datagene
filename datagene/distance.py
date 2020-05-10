@@ -20,12 +20,14 @@ import matplotlib.pyplot as plt
 from scipy.stats import pearsonr, ranksums, mood, fligner, ansari, bartlett, levene, mannwhitneyu, ks_2samp, distributions
 from collections import OrderedDict
 from scipy.spatial.distance import directed_hausdorff
+from scipy import stats
 from scipy import special
 import warnings
 warnings.filterwarnings("ignore")
 from datagene import dist_utilities as distu
 from datagene.transform import vect_extract
 import pandas as pd 
+import pandasvault as pv
 
 
 ## Tensor
@@ -186,7 +188,7 @@ def dissimilarity_multiples_np(df_org_out,df_gen_out):
 
   d_m_m["incept_multi"] = abs(distu.inception(df_gen_out)/distu.inception(df_org_out)-1)
 
-  d_m_m["cent_multi"] = (abs(distu.centropy(df_org_out,df_org_out)/centropy(df_org_out,df_gen_out)-1))
+  d_m_m["cent_multi"] = (abs(distu.centropy(df_org_out,df_org_out)/distu.centropy(df_org_out,df_gen_out)-1))
   place = abs(distu.ctc(df_org_out, df_org_out)/distu.ctc(df_org_out, df_org_out))
   d_m_m["ctc_multi"] = abs(abs(distu.ctc(df_gen_out, df_org_out)/distu.ctc(df_org_out, df_gen_out))-place)
   d_m_m["corexdc_multi"] = abs(distu.corexdc(df_org_out, df_gen_out)/distu.corexdc(df_org_out, df_org_out)-1)
@@ -214,29 +216,29 @@ def matrix_distance(a,b, skip_bhat=False):
   dict_dist["js_metric"] = distu.js_metric(a,b)
   
   #distance
-  dict_dist["dice"] = round(abs(dice(a, b)),5) - round(abs(dice(a, a)),5)
-  dict_dist["kulsinski"] = round(kulsinski(a, b),5) - round(kulsinski(a, a),5)
-  dict_dist["rogerstanimoto"] = round(abs(rogerstanimoto(a, b)),5) - round(abs(rogerstanimoto(a, a)),5)
-  dict_dist["russellrao"] = round(abs(russellrao(a, b)),5) - round(abs(russellrao(a, a)),5)
-  dict_dist["sokalmichener"] = round(abs(sokalmichener(a, b)),5)- round(abs(sokalmichener(a, a)),5)
-  dict_dist["sokalsneath"] = round(abs(sokalsneath(a, b)),5) - round(abs(sokalsneath(a, a)),5)
-  dict_dist["yule"] = round(yule(a, b),5) - round(yule(a, a),5)
+  dict_dist["dice"] = round(abs(distu.dice(a, b)),5) - round(abs(distu.dice(a, a)),5)
+  dict_dist["kulsinski"] = round(distu.kulsinski(a, b),5) - round(distu.kulsinski(a, a),5)
+  dict_dist["rogerstanimoto"] = round(abs(distu.rogerstanimoto(a, b)),5) - round(abs(distu.rogerstanimoto(a, a)),5)
+  dict_dist["russellrao"] = round(abs(distu.russellrao(a, b)),5) - round(abs(distu.russellrao(a, a)),5)
+  dict_dist["sokalmichener"] = round(abs(distu.sokalmichener(a, b)),5)- round(abs(distu.sokalmichener(a, a)),5)
+  dict_dist["sokalsneath"] = round(abs(distu.sokalsneath(a, b)),5) - round(abs(distu.sokalsneath(a, a)),5)
+  dict_dist["yule"] = round(distu.yule(a, b),5) - round(distu.yule(a, a),5)
 
-  dict_dist["braycurtis"] = braycurtis(a, b)
+  dict_dist["braycurtis"] = distu.braycurtis(a, b)
   dict_dist["directed_hausdorff"] = directed_hausdorff(a,b)[0]
-  dict_dist["manhattan"] = manhattan(a, b)
+  dict_dist["manhattan"] = distu.manhattan(a, b)
   #dict_dist["cosine"] = np.abs(np.nanmedian(cosine(a,b)))
   #dict_dist["sqeuclidean"] = np.abs(sqeuclidean(a, b))
-  dict_dist["chi2"] =  chi2_distance(a, b, eps = 1e-10)
-  dict_dist["euclidean"] =  euclidean_distance(a,b)
-  dict_dist["variational"] =  variational_distance(a,b)
-  dict_dist["kulczynski"] = kulSim(a, b)
-  dict_dist["bray"] = braySim(a, b, t="1")
-  dict_dist["gower"] = gowerSim(a, b)
-  dict_dist["hellinger"] = chordDis(a, b, t="1")
-  dict_dist["czekanowski"] = charDist(a, b, t="1")
-  dict_dist["whittaker"] = np.mean(whitDist(a, b, t="1"))
-  dict_dist["canberra"] = canDist(a, b, t="1")
+  dict_dist["chi2"] =  distu.chi2_distance(a, b, eps = 1e-10)
+  dict_dist["euclidean"] =  distu.euclidean_distance(a,b)
+  dict_dist["variational"] =  distu.variational_distance(a,b)
+  dict_dist["kulczynski"] = distu.kulSim(a, b)
+  dict_dist["bray"] = distu.braySim(a, b, t="1")
+  dict_dist["gower"] = distu.gowerSim(a, b)
+  dict_dist["hellinger"] = distu.chordDis(a, b, t="1")
+  dict_dist["czekanowski"] = distu.charDist(a, b, t="1")
+  dict_dist["whittaker"] = np.mean(distu.whitDist(a, b, t="1"))
+  dict_dist["canberra"] = distu.canDist(a, b, t="1")
 
  
   return OrderedDict([(key,round(abs(ra),5)) for key, ra in dict_dist.items()])
@@ -294,7 +296,7 @@ def pca_variance(vect_org_df_sc, vect_gen_df_sc):
     return pca_error, pca_corr, p_value
 
 def build_frame(y_pred_org,y_pred_gen,prop=0.1):
-  vect_org_df, vect_org_df_sc, vect_gen_df, vect_gen_df_sc = bootstrapped_frame(y_pred_org,y_pred_gen,prop)
+  _, vect_org_df_sc, _, vect_gen_df_sc = bootstrapped_frame(y_pred_org,y_pred_gen,prop)
 
   # Some Cleaning Operations
   vect_org_df_sc = vect_org_df_sc.dropna(thresh = len(vect_org_df_sc)*0.95, axis = "columns") 
@@ -317,22 +319,22 @@ def build_frame(y_pred_org,y_pred_gen,prop=0.1):
 def vector_distance(a,b):
   dict_dist = {}
   dict_dist["braycurtis"] = distu.braycurtis(a, b)
-  dict_dist["canberra"] = canberra(a, b)
-  dict_dist["correlation"] = correlation(a, b)
-  dict_dist["cosine"] = cosine(a, b)
-  dict_dist["dice"] = dice(a, b)
-  dict_dist["euclidean"] = euclidean(a, b)
-  # dict_dist["hamming"] = hamming(a, b) #discrete
-  # dict_dist["jaccard"] = jaccard(a, b) #discrete
-  dict_dist["kulsinski"] = kulsinski(a, b)
-  dict_dist["manhattan"] = manhattan(a, b)
-  dict_dist["rogerstanimoto"] = rogerstanimoto(a, b)
-  dict_dist["russellrao"] = russellrao(a, b)
-  dict_dist["sokalmichener"] = sokalmichener(a, b)
-  dict_dist["sokalsneath"] = sokalsneath(a, b)
-  dict_dist["sqeuclidean"] = sqeuclidean(a, b)
-  dict_dist["yule"] = yule(a, b)
-  dict_dist["ks_statistic"] = ks_statistic_vec(a,b) #here
+  dict_dist["canberra"] = distu.canberra(a, b)
+  dict_dist["correlation"] = distu.correlation(a, b)
+  dict_dist["cosine"] = distu.cosine(a, b)
+  dict_dist["dice"] = distu.dice(a, b)
+  dict_dist["euclidean"] = distu.euclidean(a, b)
+  # dict_dist["hamming"] = distu.hamming(a, b) #discrete
+  # dict_dist["jaccard"] = distu.jaccard(a, b) #discrete
+  dict_dist["kulsinski"] = distu.kulsinski(a, b)
+  dict_dist["manhattan"] = distu.manhattan(a, b)
+  dict_dist["rogerstanimoto"] = distu.rogerstanimoto(a, b)
+  dict_dist["russellrao"] = distu.russellrao(a, b)
+  dict_dist["sokalmichener"] = distu.sokalmichener(a, b)
+  dict_dist["sokalsneath"] = distu.sokalsneath(a, b)
+  dict_dist["sqeuclidean"] = distu.sqeuclidean(a, b)
+  dict_dist["yule"] = distu.yule(a, b)
+  dict_dist["ks_statistic"] = distu.ks_statistic_vec(a,b) #here
 
   return dict_dist
 
@@ -364,13 +366,13 @@ def density_arr(dist_org_1,dist_org_2, col):
 
     return kde.support, kde.density, kde 
 
-  support_org_1, density_org_1, kde_org = kde_func_sans(dist_org_1[col], bw)
+  support_org_1, density_org_1, _ = kde_func_sans(dist_org_1[col], bw)
 
   max_target = dist_org_1[col].astype(int).max()
   min_target = dist_org_1[col].astype(int).min()
   change = dist_org_2[col]
   scaled_array = np.interp(change, (change.min(), change.max()), (min_target, max_target))
-  support_org_2, density_org_2, kde_gen = kde_func_sans(scaled_array, bw)
+  support_org_2, density_org_2, _ = kde_func_sans(scaled_array, bw)
   return density_org_1, density_org_2, support_org_1, support_org_2
 
 
@@ -446,12 +448,12 @@ kernel_switch = dict(gau=kernels.Gaussian, epa=kernels.Epanechnikov,
 # Curves
 def curve_metrics(matrix_org,matrix_gen):
   c_dict = {}
-  c_dict["Curve Length Difference"] = round(curve_length_measure(matrix_org, matrix_gen),5)
+  c_dict["Curve Length Difference"] = round(distu.curve_length_measure(matrix_org, matrix_gen),5)
   c_dict["Mean Absolute Difference"] = np.mean(abs(matrix_org[:, 1]-matrix_gen[:, 1])).round(5)
-  c_dict["Partial Curve Mapping"] = round(pcm(matrix_gen, matrix_org),5)
-  c_dict["Discrete Frechet Distance"] = round(frechet_dist(matrix_gen, matrix_org),5)
-  c_dict["Dynamic Time Warping"] = round(dtw(matrix_gen, matrix_org)[0],5)
-  c_dict["Area Between Curves"] = round(area_between_two_curves(matrix_org, matrix_gen),5)
+  c_dict["Partial Curve Mapping"] = round(distu.pcm(matrix_gen, matrix_org),5)
+  c_dict["Discrete Frechet Distance"] = round(distu.frechet_dist(matrix_gen, matrix_org),5)
+  c_dict["Dynamic Time Warping"] = round(distu.dtw(matrix_gen, matrix_org)[0],5)
+  c_dict["Area Between Curves"] = round(distu.area_between_two_curves(matrix_org, matrix_gen),5)
 
   return c_dict
 
@@ -461,11 +463,11 @@ def curve_metrics(matrix_org,matrix_gen):
 # I removed two methods, because they are too costly
 def dict_curve(matrix_org_s,matrix_gen_s):
   c_dict = {}
-  c_dict["Curve Length Difference"] = round(curve_length_measure(matrix_org_s, matrix_gen_s),5)
-  c_dict["Partial Curve Mapping"] = round(pcm(matrix_gen_s, matrix_org_s),5)
-  c_dict["Discrete Frechet Distance"] = round(frechet_dist(matrix_gen_s, matrix_org_s),5)
-  c_dict["Dynamic Time Warping"] = round(dtw(matrix_gen_s, matrix_org_s)[0],5)
-  c_dict["Area Between Curves"] = round(area_between_two_curves(matrix_org_s, matrix_gen_s),5)
+  c_dict["Curve Length Difference"] = round(distu.curve_length_measure(matrix_org_s, matrix_gen_s),5)
+  c_dict["Partial Curve Mapping"] = round(distu.pcm(matrix_gen_s, matrix_org_s),5)
+  c_dict["Discrete Frechet Distance"] = round(distu.frechet_dist(matrix_gen_s, matrix_org_s),5)
+  c_dict["Dynamic Time Warping"] = round(distu.dtw(matrix_gen_s, matrix_org_s)[0],5)
+  c_dict["Area Between Curves"] = round(distu.area_between_two_curves(matrix_org_s, matrix_gen_s),5)
   #c_dict["KS Statistic X x Y"] = round(ks_2samp(matrix_org_s[:,1]*matrix_org_s[:,0], matrix_gen_s[:,1]*matrix_gen_s[:,1])[0],5)
   return c_dict
 
