@@ -9,6 +9,7 @@ As of now, this packakge is catering for time-series regression tasks, and more 
 ```python
 datasets = [org, gen_1, gen_2]
 ```
+&nbsp;
 
 # Transformation Recipes
 
@@ -135,9 +136,9 @@ def transf_recipe_2(arr):
 recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 ```
+&nbsp;
 
-### Distance Recipes
----------------
+# Distance Recipes
 
 A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. The only tensor (3D) distance measure available 
 
