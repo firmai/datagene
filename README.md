@@ -224,10 +224,10 @@ pred_dict = dist.regression_metrics(pred_list=[y_pred_org, y_pred_gen_1,y_pred_g
 explained_variance_score	0.988543	0.991786	0.989290	0.997897
 max_error	                0.125190	0.115178	0.128092	0.100051
 mean_absolute_error	        0.030326	0.026712	0.036038	0.010663
-mean_squared_error	        0.001326	     0.001017	0.001825	0.000251
-mean_squared_log_error	        0.000521	     0.000382	0.000592	0.000087
-median_absolute_error	        0.027985	      0.025136	0.033403	0.006978
-r2_score	                0.987251	     0.990348	0.982379	0.997897
+mean_squared_error	        0.001326	0.001017	0.001825	0.000251
+mean_squared_log_error	        0.000521	0.000382	0.000592	0.000087
+median_absolute_error	        0.027985	 0.025136	0.033403	0.006978
+r2_score	                0.987251	 0.990348	0.982379	0.997897
 ```
 
 #### **Statistical feature rank correlation**
