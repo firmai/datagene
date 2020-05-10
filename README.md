@@ -19,15 +19,15 @@ This first recipe uses six arbitary transformations to identify the similarity o
 
 
 From Tesseract:
-
 ---------------
+
 ```tran.mps_decomp_4_to_2()``` - Used as the de facto standard for the representation of one-dimensional quantum many body states.
 
 
 
 From Tensor:
-
 -----------------
+
 ```tran.gaf_encode_3_to_4()``` - A Gramian Angular Field is an image obtained from a time series, representing some temporal correlation between each time point. 
 
 ```tran.mrp_encode_3_to_4()``` - Recurrence Plots are a way to visualize the behavior of a trajectory of a dynamical system in phase space.
@@ -122,7 +122,7 @@ recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1(datasets)
 ##### Example Transformation Recipe Pipeline 2
 Here we just reorder the transformation performed in Pipeline 1.
 
-```
+```python
 def transf_recipe_2(arr):
   return (tran.pipe(arr)[tran.mrp_encode_3_to_4]()
             [tran.mps_decomp_4_to_2]()
