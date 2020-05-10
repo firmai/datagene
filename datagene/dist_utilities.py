@@ -22,7 +22,6 @@ from sklearn.neighbors import BallTree, KDTree
 from scipy.stats import kde
 import os
 from sklearn.feature_extraction.text import CountVectorizer
-import gensim
 from scipy import stats
 from scipy import special
 

@@ -4,7 +4,7 @@ import sys
 
 
 setup(name='datagene',
-      version='0.0.1',
+      version='0.0.2',
       description='Data Comparison Toolbox with Transformation and Similarity Analysis',
       url='https://github.com/firmai/datagene',
       author='snowde',
@@ -12,17 +12,27 @@ setup(name='datagene',
       license='MIT',
       packages=['datagene'],
       install_requires=[
-            "fbprophet",
+            "pandasvault",
+            "scikit-image==0.15",
+            "git+git://github.com/FirmAI-Research/ecopy.git",
+            "scikit-image",
+            "deltapy",
+            "esig",
+            "ImageHash",
+            "porespy"
+            "shap",
+            "pyts"
+            "tensorly",
             "pandas",
-            "pykalman",
-            "tsaug",
-            "gplearn",
-            "ta",
-            "tensorflow",
             "scikit-learn",
             "scipy",
-            "sklearn",
             "statsmodels",
             "numpy",
-            "seasonal"],
+            "google",
+            "tensorflow",
+            "keras",
+            "opencv-python"
+            
+            
+            ],
       zip_safe=False)
