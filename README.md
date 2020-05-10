@@ -213,6 +213,7 @@ Examples
 ---------------
 
 **Statistical feature rank correlation**
+This measure is based on the belief that similar datasets that are used to predict the same value or outcome, using the same model, will have the same feature rank ordering. Because there is some inherent randomness in the model development process, the rank correlation are taken multiple times, then the orginal-original rank correlations are compared against original-generated rank correlations. A t-stat and p-value is also derived from this comparison. 
 
 ```python
 dist.boot_stat(gen_org_arr,org_org_arr)
@@ -226,7 +227,7 @@ Original: 0.30857142857142855, Generated: 0.15428571428571428, Difference: 0.154
 ```
 
 **Statistical feature divergence significance.**
-
+Following along from the previous method, this method trains
 
 ```python
 un_var_t, df_pval = dist.stat_pval(single_org_total,single_gen_total)
@@ -416,9 +417,62 @@ P-Value
 
 ```
 
+### Parting Notes
+
+**Methods**
+
+The purpose of this package is to compare datasets for similarity. Why would we be interested in dataset-similarity and not just the utility or predictive quality of the data? The most important reason is to preserve the interpretability of the results. If the sole purpose of the generated data is to be used in black-box machine learning models, then simillarity is not a prerequisite, but for just about any other reason, data similarity is a must. Think along the lines of feature importance scores, data exploration, causal and associative analysis, decision-making, anomaly detection, scenario analysis, and software development.
+
+There is a slight difference between testing dataset quality and testing models performance using data, for datasets comparison we test one dataset versus many, for models it is many datasets versus many datasets. In which case you might move into high-order tensors like tessaracts. Whether you want to compare a few datasets or series of datasets, this package would enable you to move into the appropriate dimension.
+
+Datasets can largely be compared using quantitative and visual methods. Generated data can take on many formats, it can consist of multiple dimensions of various widths and heights. Original and generated datasets have to be transformed into an acceptable format before they can be compared, these transformation sometimes leads to a reduction in array dimensions. There are two reasons why we might want to reduce array dimensions, the first is to establish an acceptable format to perform distance calculations; the second is the preference for comparing like with like. The concatenated samples in a generated array are assumed independent from that of the original data and an aggregation across all samples could lead to more accurate and interpretable distance statistics. For that reason, data similarity is a function, of not just distance calculations and statistics, but also data transformations.
+
+**Motivation**
+
+The reason why one would want to emphasise data relationships is the importance of data integrity in the data science process. Generating data that preserves the predictive signal but increases the relationship noise might be beneficial for a black-box prediction task, but that is about it. 
+
+This method is predicated on two ideas; the first being that certain distance and statistical metrics are only available, or are best tested, on data-structures of specific dimensions; the second, that lower and higher dimensional representations of data might lead to a better understanding of non-linear relationships within the data. 
+
+Input data therefore generally requires a transformation (i.e. covariance matrix) plus a distance metric between the two transformed datasets in question (average element-wise euclidean distance). In such a way, one can develop transformation-distance recipes that best capture differences in you data. 
+
+The benefit of an approach that catalogues various methods, is that the effectiveness of various transormation plus distance recipes can be tested against data that have been generated with known to be optimal vs non-optimal procedures by comparing the learning curves of discriminator and generator losses over time. One would then be able to emperically validate the performance of every distinct recipe. 
+
+This package would eventually carry two streams of data statistics, those for time-series and those from cross-sectional data. 
+
+**Transformations**
+
+For most distance measures, we would prefer non-sample specific comparisons. Real versus generated sample-specific distance could be usefull as a measure of the overall bias of the generated data. Generally we also want to focus on the relationships and not just feature (columnular) bias, in which case it is important that the transformations blend the samples into the lower dimension for a row-agnostic comparison. Decomposition helps to decrease the data-structure dimensionality, and encoding increases it. A recipe could theoretically transform the data-structure up a dimension and brings it down again, and by virtue of this process could help to expose non-linear relationships.
+
+Multivariate time series data are generally generated as chunks of two dimensional arrays. These chunks can be captured in an additional dimension to create a rank three tensor. In such a scenario we might face a problem because of a lack of tensor comparison techniques. In other circumstances, one might start with a lower dimensional array but have the need to identify higher dimensional relationships and therefore perform encoding functions that lead to high-dimensional data structures. 
+
+Either way, there is a need to transform data to a lower acceptable dimensions to perform similarity calculations. For that reason we might want to transform a tesseract to a cubed tensor, a tensor to a matrix, and a matrix to a vector. With each additional transformation data similarity techniques become easier to perform. To do this we can use factorization, aggregation and other customised techniques. Some distance metrics have been adapted into statistical tests, the benefit of statistical tests is that we can set thresholds for what we will be comfortable with. We can also set thresholds with standardised data.
 
 
+***Types of Transformations:***
+1. Data transformations to blend in samples\*. (preferred)
+1. Transformations to decrease feature dimensions. (sometimes preferred)
+1. Additional transformations for distance functions. (sometimes needed)
+1. Additional transformations for hypotheses tests. (sometimes needed)
 
+Example of Blend Operations:
+1. KDE lines.
+1. Sort of data.
+1. Cummulative sum. 
+1. PCA on Features. 
+1. 2D Histogram.
+
+
+\*Moving away from element-wise sample comparison towards structured comparisons.
+
+**GAN Methods**
+
+Using GAN methods, we can reproduce or generate data of any dimensional type. Before the generation of synthetic datasets, we generally have an idea of the type of problem we want to solve. If it is a prediction problem that requires the anonimisation of data, one might prefer to generate data in a prediction-ready format.
+
+In this example, the generated data is prepackaged for a prediction problem. It contains the standard 6 market data features, including the different price attributes (close, open etc.) and volume for a time series of Google's Stocks price for 3661 days. The generated data is constructed such that it looks back for 24 time-steps. We therefore have a three-dimensional data structure (array) when we include the sample dimension.
+
+The first step in the comparison process is to ensure that all the data fits within one data structure, as this is a requirement for future transformation and distance metrics. Each of the above arrays, the generated version (gen_1) and the real verion (org) consists of 3661 samples of 2D arrays (matrices) with six features and 24 time steps each. In total the size is 3661 x 6 x 24 (527184.
+
+We largely want to compare these two groups of data to identify how simlilar they are. What follows are some techniques that can facilitate this test for similarity. In a sense this then are not simply a library for comparison, but a library for data transformation, distance measurement, and statistical tests. Because we are working with distance metrics, it is better to normalise the datasets from the get go.
 
 
 
