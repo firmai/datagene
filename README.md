@@ -264,6 +264,15 @@ Recurrence
 ```
 Hash image similarity.
 
+```python
+print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.array_4d_to_rgba_image(mtf_fsdd_4d_gen_1)))
+print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.array_4d_to_rgba_image(mtf_fsdd_4d_gen_2)))
+```
+```
+51.5625
+40.625
+```
+
 Distance matrix hypothesis tests.
 ```python
 pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
@@ -329,7 +338,7 @@ PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.
 (0.07666231511948172, 0.9996278922766885, 8.384146445855097e-14)
 ```
 
-Statistical and geometric distance measures. (vect dist)
+Statistical and geometric distance measures.
 
 ```
 braycurtis	canberra	correlation	  cosine	dice	       euclidean	...
