@@ -320,8 +320,12 @@ Adj_Close  0.18347
 
 #### **Structural grey image similarity**
 
+The Structural Similarity Index (SSIM) is a perceptual metric that quantifies image quality degradation* caused by processing such as data compression or by losses in data transmission. If after processing the one dataset is more similar to the original data, then that dataset is more likely to capture the characteristics of the original data.
+
+
 ```python
 dist.ssim_grey(gray_org,gray_gen_1)
+dist.ssim_grey(gray_org,gray_gen_2)
 ```
 
 ```
@@ -330,8 +334,12 @@ Image similarity: 0.21369506433133445
 ```
 
  #### **Histogram image similarity**
+ 
+Returns a histogram for the image. The histogram is returned as a list of pixel counts, one for each pixel value in the source image. By looking at the histogram of an image, you get intuition about contrast, brightness, intensity distribution etc of that image. It is therefore worth comparing the image histograms of different datasets. 
+ 
 ```python
 dist.image_histogram_similarity(visu.array_3d_to_rgb_image(rp_sff_3d_org), visu.array_3d_to_rgb_image(rp_sff_3d_gen_1) ))
+dist.image_histogram_similarity(visu.array_3d_to_rgb_image(rp_sff_3d_org), visu.array_3d_to_rgb_image(rp_sff_3d_gen_2) ))
 ```
 ```
 Recurrence
@@ -339,6 +347,8 @@ Recurrence
 17.455374649851166
 ```
 #### **Hash image similarity**
+
+Perceptual hash (pHash) acts as an image fingerprint. This mathematical algorithm analyzes an image's content and represents it using a 64-bit number fingerprint. Two images' pHash values are "close" to one another if the images' content features are similar. The differences in pHash similarity can be used to measure the similarity between datasets.
 
 ```python
 print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.array_4d_to_rgba_image(mtf_fsdd_4d_gen_1)))
@@ -350,6 +360,7 @@ print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.
 ```
 
 #### **Distance matrix hypothesis tests**
+
 ```python
 pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
 ```
