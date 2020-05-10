@@ -190,7 +190,7 @@ Vector
 Examples
 ---------------
 
-###### Statistical feature rank correlation.
+Statistical feature rank correlation.
 
 ```python
 dist.boot_stat(gen_org_arr,org_org_arr)
@@ -203,7 +203,7 @@ Original: 0.30857142857142855, Generated: 0.15428571428571428, Difference: 0.154
 (0.8877545314489291, 0.3863818038855802)
 ```
 
-###### Statistical feature divergence significance.
+Statistical feature divergence significance.
 
 
 ```python
