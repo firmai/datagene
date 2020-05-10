@@ -10,7 +10,7 @@ As of now, this packakge is catering for time-series regression tasks, and more 
 datasets = [org, gen_1, gen_2]
 ```
 
-### Transformation Recipes
+## Transformation Recipes
 ---------------
 
 *You have the ability to work with 2D and 3D generated data. This notebook will work with a 3D time series array. Data has to organised as samples, times steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
