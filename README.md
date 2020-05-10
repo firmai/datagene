@@ -332,7 +332,7 @@ PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.
 Statistical and geometric distance measures. (vect dist>_
 
 ```
-braycurtis	canberra	correlation	cosine	dice	euclidean	kulsinski	manhattan	rogerstanimoto	russellrao	sokalmichener	sokalsneath	sqeuclidean	yule	ks_statistic
+braycurtis	canberra	correlation	  cosine	dice	euclidean	kulsinski	manhattan	rogerstanimoto	russellrao	sokalmichener	sokalsneath	sqeuclidean	yule	ks_statistic
 Iteration_0	0.101946	318.692930	0.030885	0.019464	0.571581	1.571925	0.941558	28.962261	0.311882	0.930761	0.311882	0.842188	2.470950	0.283410	0.222096
 Iteration_1	0.097229	306.932707	0.028121	0.017263	0.556409	1.558560	0.935234	29.802774	0.324953	0.922669	0.324953	0.833813	2.429108	0.286025	0.217540
 Iteration_2	0.102882	314.205121	0.031078	0.019340	0.602853	1.451904	0.948690	27.679639	0.311548	0.939222	0.311548	0.858594	2.108026	0.313010	0.224374
