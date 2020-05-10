@@ -516,6 +516,7 @@ P-Value
 ```
 
 ### Parting Notes
+----------
 
 **Methods**
 
