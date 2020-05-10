@@ -212,7 +212,7 @@ Vector
 Examples
 ---------------
 
-###### **Statistical feature rank correlation**
+#### **Statistical feature rank correlation**
 This measure is based on the belief that similar datasets that are used to predict the same value or outcome, using the same model, will have the same feature rank ordering. Because there is some inherent randomness in the model development process, the rank correlation are taken multiple times, then the orginal-original rank correlations are compared against original-generated rank correlations. A t-stat and p-value is also derived from this comparison. 
 
 ```python
@@ -226,7 +226,7 @@ Original: 0.30857142857142855, Generated: 0.15428571428571428, Difference: 0.154
 (0.8877545314489291, 0.3863818038855802)
 ```
 
-##### **Statistical feature divergence significance.**
+#### **Statistical feature divergence significance.**
 Following along from the previous method, this method trains
 
 ```python
