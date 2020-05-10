@@ -4,11 +4,27 @@
 
 The first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, [Mihaela van der Schaar](https://www.turing.ac.uk/people/researchers/mihaela-van-der-schaar), Jinsung Yoon, Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
 
-As of now, this packakge is catering for time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. These methods can still be used for these tasks, but some functions won't apply.
+As of now, this packakge is catering for time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This packaage can still be used for other tasks, but some functions won't apply.
 
 ```python
 datasets = [org, gen_1, gen_2]
 ```
+
+Installation and important modules:
+
+```
+pip install datagene
+```
+
+```
+from datagene import distance as dist          # Distance Functions
+from datagene import transform as tran         # Transformation Functions
+from datagene import mod_utilities as mod      # Model Development Utilities
+from datagene import dist_utilities as distu   # Distance Utilities
+from datagene import vis_utilities as visu     # Visualisation Utility Functions
+```
+
+
 &nbsp;
 
 # Transformation Recipes
