@@ -297,8 +297,43 @@ Iteration_3 	0.094278 	304.127560 	0.028063 	0.017154 	0.535805 	1.667062 	0.928
 Iteration_4 	0.097794 	325.415987 	0.029636 	0.018002 	0.566395 	1.565529 	0.937156 	29.816744 	0.328361 	0.924811 	0.328361 	0.839357 	2.450881 	0.299397 	0.242597
 ```
 
+```python
+vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataFrame(org.mean(axis=(1)),columns=f_names),pd.DataFrame(gen_1.mean(axis=(1)),columns=f_names),f_names)
+```
 
+```
+ 	Open 	High 	Low 	Close 	Adj_Close 	Volume
+braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
+canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
+correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
+cosine 	0.328764 	0.307929 	0.307298 	0.309757 	0.304822 	0.538475
+dice 	-0.228367 	-0.245702 	-0.216325 	-0.236500 	-0.246685 	-0.486245
+```
 
+```python
+dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
+```
+
+```
+{'Area Between Curves': 0.60957,
+ 'Curve Length Difference': 25.60853,
+ 'Discrete Frechet Distance': 2.05938,
+ 'Dynamic Time Warping': 217.50606,
+ 'Mean Absolute Difference': 0.53275,
+ 'Partial Curve Mapping': 159.14488}
+ ```
+ 
+```python
+ dict_sta, dict_pval  = dist.vector_hypotheses(matrix_org[:, 1],matrix_gen_1[:, 1])
+```
+
+```
+Statistic
+{'pearsonr': 0.6489227957382259, 'ranksums': -267.40109998538, 'mood': 74.66159732420131, 'fligner': 18979.312108773225, 'ansari': 547045501353.0, 'bartlett': 299084.5868101086, 'levene': 15724.282328938525, 'mannwhitneyu': 432539640953.0}
+P-Value
+{'pearsonr': 0.0, 'ranksums': 0.0, 'mood': 0.0, 'fligner': 0.0, 'ansari': 3.880810985159465e-35, 'bartlett': 0.0, 'levene': 0.0, 'mannwhitneyu': 0.0}
+
+```
 
 
 
