@@ -348,7 +348,7 @@ vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataF
 
 ```
 
-           	Open    	High    	Low           Close   	Adj_Close      Volume 
+           	Open    	High    	Low             Close   	  Adj_Close      Volume 
 braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
 canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
 correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
