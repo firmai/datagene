@@ -14,7 +14,6 @@ setup(name='datagene',
       install_requires=[
             "pandasvault",
             "scikit-image==0.15",
-            "git+git://github.com/FirmAI-Research/ecopy.git",
             "scikit-image",
             "deltapy",
             "esig",
