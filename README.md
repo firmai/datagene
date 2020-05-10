@@ -156,7 +156,7 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 # Distance Recipes
 
-A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. A few of these methods are novel and new to academia, and would require some benchmarking in the future, they have been signed (NV).
+A range of distance measures have been developed to calculate differences between 1D, 2D, and 3D arrays. A few of these methods are novel and new to academia, and would require some benchmarking in the future, they have been signed (NV). In the future, this package would be branched out to look into privacy measurements too.
 
 Model (Mixed)
 ------------
