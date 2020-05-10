@@ -19,9 +19,9 @@ setup(name='datagene',
             "deltapy",
             "esig",
             "ImageHash",
-            "porespy"
+            "porespy",
             "shap",
-            "pyts"
+            "pyts",
             "tensorly",
             "pandas",
             "scikit-learn",
