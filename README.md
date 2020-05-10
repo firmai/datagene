@@ -348,7 +348,7 @@ vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataF
 
 ```
 
-           	Open    	High    	Low     	Close   	Adj_Close    Volume 
+           	Open    	High    	Low     	Close   	Adj_Close      Volume 
 braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
 canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
 correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
@@ -369,6 +369,23 @@ dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
  'Mean Absolute Difference': 0.53275,
  'Partial Curve Mapping': 159.14488}
  ```
+ 
+Curve KDE Map
+```python
+```
+vect_org_dens_curve = dist.curve_kde_map(df_org_2d_flat.sample(frac=frac).astype('double'),df_org_2d_flat.sample(frac=frac).astype('double'), f_names, 0.01)
+```
+
+Open	High	Low	Close	Adj_Close	Volume
+Curve Length Difference	0.499444	0.513556	0.518112	0.526037	0.527647	0.351608
+Partial Curve Mapping	0.366652	0.362188	0.359239	0.373632	0.366966	0.296968
+Discrete Frechet Distance	0.090328	0.092736	0.090900	0.093791	0.093466	0.073793
+Dynamic Time Warping	1.898949	2.055921	1.914067	2.013428	1.969417	1.789365
+Area Between Curves	0.035566	0.036917	0.035882	0.036786	0.036718	0.031578
+```
+
+
+
  
 Vector statistical tests.
 
