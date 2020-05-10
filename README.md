@@ -26,23 +26,23 @@ From Tesseract:
 
 From Tensor:
 
-```tran.gaf_encode_3_to_4()```
+```tran.gaf_encode_3_to_4()``` - A Gramian Angular Field is an image obtained from a time series, representing some temporal correlation between each time point. 
 
-```tran.mrp_encode_3_to_4()```
+```tran.mrp_encode_3_to_4()``` - Recurrence Plots are a way to visualize the behavior of a trajectory of a dynamical system in phase space.
 
-```tran.mtf_encode_3_to_4()```
+```tran.mtf_encode_3_to_4()``` - A Markov Transition Field is an image obtained from a time series, representing a field of transition probabilities for a discretized time series.
 
-```tran.mps_decomp_3_to_2()```
+```tran.mps_decomp_3_to_2()``` - Used as the de facto standard for the representation of one-dimensional quantum many body states.
 
-```tran.jrp_encode_3_to_3()```
+```tran.jrp_encode_3_to_3()``` - A joint recurrence plot (JRP) is a graph which shows all those times at which a recurrence in one dynamical system occurs simultaneously with a recurrence in a second dynamical system
 
-```tran.mean_3_to_2()```
+```tran.mean_3_to_2()``` - Mean aggregation at the sample level.
 
-```tran.sum_3_to_2()```
+```tran.sum_3_to_2()``` - Sum aggregation at the sample level.
 
-```tran.min_3_to_2()```
+```tran.min_3_to_2()``` - Minimum aggregation at the sample level.
 
-```tran.var_3_to_2()```
+```tran.var_3_to_2()``` - Variation aggregation at the sample level.
 
 ```tran.tucker_decomp_3_to_2()```
 
@@ -163,55 +163,6 @@ Vector
 
 
 ```python
-dist.entropy_dissimilarity(recipe_2_org,recipe_2_gen_1)
-```
-
-```
-OrderedDict([('incept_multi', 0.02341),
-             ('cent_multi', 0.0677),
-             ('ctc_multi', 0.01665),
-             ('corexdc_multi', 0.02867),
-             ('ctcdc_mult', 0.02979),
-             ('mutual_mult', 5.55106),
-             ('minfo', 0.35879)])
-```
-
-
-```python
-dist.matrix_distance(recipe_2_org,recipe_2_gen_1)
-```
-```
-OrderedDict([('correlation', 0.00039),
-             ('intersection', 0.0),
-             ('renyi_divergence', nan),
-             ('pearson_rho', 0.0),
-             ('jensen_shannon_divergence', nan),
-             ('ks_statistic_kde', 0.09268),
-             ('js_metric', 0.12354),
-             ('dice', 1.75803),
-             ('kulsinski', 0.00031),
-             ('rogerstanimoto', 0.15769),
-             ('russellrao', 5.46193),
-             ('sokalmichener', 0.15769),
-             ('sokalsneath', 0.00472),
-             ('yule', 0.0372),
-             ('braycurtis', 0.19269),
-             ('directed_hausdorff', 5.38616),
-             ('manhattan', 7.19403),
-             ('chi2', 0.62979),
-             ('euclidean', 5.64465),
-             ('variational', 7.19403),
-             ('kulczynski', nan),
-             ('bray', 0.1941),
-             ('gower', 0.33268),
-             ('hellinger', 0.02802),
-             ('czekanowski', 0.55339),
-             ('whittaker', 0.00501),
-             ('canberra', 4.44534)])
-```
-
-
-```python
 dist.boot_stat(gen_org_arr,org_org_arr)
 ```
 
@@ -270,12 +221,45 @@ pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
 {'mantel': 0.5995869421294606, 'procrustes': 0.4925792204150222, 'rda': 0.9999999999802409}
 ```
 
-
 ```python
 diss_np_one = dist.entropy_dissimilarity(org.var(axis=0),gen_1.var(axis=0)); print(diss_np_one)
 ```
 ```
 OrderedDict([('incept_multi', 0.00864), ('cent_multi', 0.25087), ('ctc_multi', 28.56361), ('corexdc_multi', 0.14649), ('ctcdc_mult', 0.15839), ('mutual_mult', 0.32102), ('minfo', 0.91559)])
+```
+
+
+```python
+dist.matrix_distance(recipe_2_org,recipe_2_gen_1)
+```
+```
+OrderedDict([('correlation', 0.00039),
+             ('intersection', 0.0),
+             ('renyi_divergence', nan),
+             ('pearson_rho', 0.0),
+             ('jensen_shannon_divergence', nan),
+             ('ks_statistic_kde', 0.09268),
+             ('js_metric', 0.12354),
+             ('dice', 1.75803),
+             ('kulsinski', 0.00031),
+             ('rogerstanimoto', 0.15769),
+             ('russellrao', 5.46193),
+             ('sokalmichener', 0.15769),
+             ('sokalsneath', 0.00472),
+             ('yule', 0.0372),
+             ('braycurtis', 0.19269),
+             ('directed_hausdorff', 5.38616),
+             ('manhattan', 7.19403),
+             ('chi2', 0.62979),
+             ('euclidean', 5.64465),
+             ('variational', 7.19403),
+             ('kulczynski', nan),
+             ('bray', 0.1941),
+             ('gower', 0.33268),
+             ('hellinger', 0.02802),
+             ('czekanowski', 0.55339),
+             ('whittaker', 0.00501),
+             ('canberra', 4.44534)])
 ```
 
 ```python
