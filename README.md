@@ -98,6 +98,9 @@ From Vector:
 ```tran.autocorr_1_to_1()```
 
 
+##### Example Transformation Recipe Pipeline 1
+There are an infinite number of ways in which you can pipe transformations. Sometimes it is better to just use on transformation at a time. Your architecture should be emperically driven. For similarity statistics that generally means traning a knowingly bad and knowingly good dataset, and seeing which transformations plus distance metrics best captures their difference.
+
 ```python
 
 def transf_recipe_1(arr):
@@ -113,7 +116,22 @@ recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1(datasets)
 
 ```
 
+##### Example Transformation Recipe Pipeline 2
+Here we just reorder the transformation performed in Pipeline 1.
 
+```
+def transf_recipe_2(arr):
+  return (tran.pipe(arr)[tran.mrp_encode_3_to_4]()
+            [tran.mps_decomp_4_to_2]()
+            [tran.qr_decomp_2_to_2]()
+            [tran.pca_decomp_2_to_1]()
+            [tran.sig_encode_1_to_2]()
+            [tran.gaf_encode_2_to_3]()
+            [tran.tucker_decomp_3_to_2]()).value
+
+recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
+
+```
 
 #### Distance Recipes
 
