@@ -190,7 +190,7 @@ def entropy_dissimilarity(df_org_out,df_gen_out):
 
   d_m_m["cent_multi"] = (abs(distu.centropy(df_org_out,df_org_out)/distu.centropy(df_org_out,df_gen_out)-1))
   place = abs(distu.ctc(df_org_out, df_org_out)/distu.ctc(df_org_out, df_org_out))
-  d_m_m["ctc_multi"] = abs(abs(distu.ctc(df_gen_out, df_org_out)/distu.ctc(df_org_out, df_gen_out))-place)
+  #d_m_m["ctc_multi"] = abs(abs(distu.ctc(df_gen_out, df_org_out)/distu.ctc(df_org_out, df_gen_out))-place)
   d_m_m["corexdc_multi"] = abs(distu.corexdc(df_org_out, df_gen_out)/distu.corexdc(df_org_out, df_org_out)-1)
   d_m_m["ctcdc_mult"] = abs(distu.ctcdc(df_org_out, df_gen_out)/distu.ctcdc(df_org_out, df_org_out)-1)
   hold = abs(distu.mutual_information((df_org_out, df_org_out))/distu.mutual_information((df_org_out, df_org_out)))
