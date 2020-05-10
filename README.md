@@ -213,6 +213,7 @@ Examples
 ---------------
 
 #### **Prediction Errors**
+Model prediction errors can be used as a distance metric to compare datasets. We have to control for the prediction problem, which in this example is a next-day closing stock price prediction task. A model is trained on each respective dataset, and the model is tested on a real hold-out set, to identify the differences in generalised performance. For interest sake, I have also included a simple previous day prediction. This and other benchmarks help you to consider if the regression prediction task is at all worthy for comparison purposes. This method would ordinarily be considered a utility metric, as it has a supervised learning component, but it could also be indicative of similarity accross datasets. The prima facie results would indicate that generated-1 (gen_1) data are more prediction-worthy than generated-2 (gen_2) data.
 
 ```python
 pred_dict = dist.regression_metrics(pred_list=[y_pred_org, y_pred_gen_1,y_pred_gen_2,org_y_vl_m1 ],name_list=["original","generated_1","generated_2","previous day"],valid=org_y_vl)
@@ -231,7 +232,7 @@ r2_score	                0.987251	0.990348	0.982379	0.997897
 ```
 
 #### **Statistical feature rank correlation**
-This measure is based on the belief that similar datasets that are used to predict the same value or outcome, using the same model, will have the same feature rank ordering. Because there is some inherent randomness in the model development process, the rank correlation are taken multiple times, then the orginal-original rank correlations are compared against original-generated rank correlations. A t-stat and p-value is also derived from this comparison. 
+This measure is based on the belief that datasets that if datasets are similar and are used to predict the same value or outcome using the same model, they will have the same or similar feature rank ordering. Because there is some inherent randomness in the model development process, the rank correlation are taken multiple times, then the orginal-original rank correlations are compared against original-generated rank correlations. A t-stat and p-value is also derived from this comparison. A low p-value would signifify a true difference. The p-values of generated datasets can be compared against eachother. 
 
 ```python
 dist.boot_stat(gen_org_arr,org_org_arr)
@@ -244,8 +245,58 @@ Original: 0.30857142857142855, Generated: 0.15428571428571428, Difference: 0.154
 (0.8877545314489291, 0.3863818038855802)
 ```
 
-#### **Statistical feature divergence significance.**
-Following along from the previous method, this method trains
+#### **Statistical feature direction**
+Following along from the previous method, this method trains a model on the different generated datasets. The difference is that for each real hold-out instance (row) that are used to obtain local shapley values, the generated and real data models are compared against eachother to see which one gives a higher contribution value and are given a value of 1. In aggregate each feature should as a result not deviate too far from 0.5 as it would be indicative of non-random biases. 
+
+```python
+divergence_total.mean(axis=0)
+```
+
+```
+Open         0.469565
+High         0.378261
+Low          0.447826
+Close        0.604348
+Adj_Close    0.504348
+Volume       0.600000
+```
+
+Because we are generating a 3D array, another axis can also be investigated, for us this would be the time step axis, again, any divergence away from 0.5 would be intial evidence of differences in dataset construction. Here we can see that time 15 to 20 (i.e., lag 8-3) seems to be diverging from the original model. This would call for further investigation. 
+
+```python
+divergence_total.mean(axis=1)
+```
+
+```
+0     0.516667
+1     0.533333
+2     0.516667
+3     0.500000
+4     0.500000
+5     0.516667
+6     0.500000
+7     0.466667
+8     0.516667
+9     0.516667
+10    0.516667
+11    0.450000
+12    0.500000
+13    0.483333
+14    0.483333
+15    0.633333
+16    0.700000
+17    0.616667
+18    0.383333
+19    0.283333
+20    0.383333
+21    0.500000
+22    0.500000
+```
+
+
+#### **Statistical feature divergence significance**
+
+This function looks at the actual overall effect size differences, this method is itterated multiple times, and as a result of the random component, we can obtain t-stats p-value and. We can see that here, there is no statistically significant element-wise differences in local feature contributions accross any of the features in the third axis. Here like before, we can also investigate the time-step axis, or even a matrix looking at both dimensions. These methods will be made available in future iterations. 
 
 ```python
 un_var_t, df_pval = dist.stat_pval(single_org_total,single_gen_total)
@@ -267,7 +318,7 @@ Close      0.18862
 Adj_Close  0.18347
 ```
 
-Structural grey image similarity.
+#### **Structural grey image similarity**
 
 ```python
 dist.ssim_grey(gray_org,gray_gen_1)
@@ -278,7 +329,7 @@ Image similarity: 0.3092467224082394
 Image similarity: 0.21369506433133445
 ```
 
- Histogram image similarity.
+ #### **Histogram image similarity**
 ```python
 dist.image_histogram_similarity(visu.array_3d_to_rgb_image(rp_sff_3d_org), visu.array_3d_to_rgb_image(rp_sff_3d_gen_1) ))
 ```
@@ -287,7 +338,7 @@ Recurrence
 25.758089344255847
 17.455374649851166
 ```
-Hash image similarity.
+#### **Hash image similarity**
 
 ```python
 print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.array_4d_to_rgba_image(mtf_fsdd_4d_gen_1)))
@@ -298,7 +349,7 @@ print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.
 40.625
 ```
 
-Distance matrix hypothesis tests.
+#### **Distance matrix hypothesis tests**
 ```python
 pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
 ```
@@ -308,7 +359,7 @@ pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
 {'mantel': 0.5995869421294606, 'procrustes': 0.4925792204150222, 'rda': 0.9999999999802409}
 ```
 
-Non-parametric entropy multiples.
+#### **Non-parametric entropy multiples**
 
 ```python
 diss_np_one = dist.entropy_dissimilarity(org.var(axis=0),gen_1.var(axis=0)); print(diss_np_one)
@@ -317,7 +368,7 @@ diss_np_one = dist.entropy_dissimilarity(org.var(axis=0),gen_1.var(axis=0)); pri
 OrderedDict([('incept_multi', 0.00864), ('cent_multi', 0.25087), ('ctc_multi', 28.56361), ('corexdc_multi', 0.14649), ('ctcdc_mult', 0.15839), ('mutual_mult', 0.32102), ('minfo', 0.91559)])
 ```
 
-Statistical and geometrics distance measures.
+#### **Statistical and geometrics distance measures**
 ```python
 dist.matrix_distance(recipe_2_org,recipe_2_gen_1)
 ```
@@ -351,7 +402,7 @@ OrderedDict([('correlation', 0.00039),
              ('canberra', 4.44534)])
 ```
 
-PCA extraction variance explained.
+#### **PCA extraction variance explained**
 
 ```python
 dist.pca_extract_explain(np.sort(y_pred_org.mean(axis=1)),np.sort(y_pred_gen_1.mean(axis=1)))
@@ -363,7 +414,7 @@ PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.
 (0.07666231511948172, 0.9996278922766885, 8.384146445855097e-14)
 ```
 
-Statistical and geometric distance measures.
+Statistical and geometric distance measures**
 
 ```
 braycurtis	canberra	correlation	  cosine	dice	       euclidean	...
@@ -374,7 +425,7 @@ Iteration_3	0.094278	304.127560	0.028063	0.017154	0.535805	...
 Iteration_4	0.097794	325.415987	0.029636	0.018002	0.566395    ...
 ```
 
-Geometric distribution distances feature map.
+#### **Geometric distribution distances feature map**
 
 ```python
 vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataFrame(org.mean(axis=(1)),columns=f_names),pd.DataFrame(gen_1.mean(axis=(1)),columns=f_names),f_names)
@@ -389,7 +440,7 @@ correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
 ... 	... 	... 	... 	... 	... 	...
 ```
 
-Curve comparison metrics.
+#### **Curve comparison metrics**
 
 ```python
 dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
@@ -404,7 +455,7 @@ dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
  'Partial Curve Mapping': 159.14488}
  ```
  
-Curve KDE Map
+#### **Curve KDE Map**
 ```python
 vect_org_dens_curve = dist.curve_kde_map(df_org_2d_flat.sample(frac=frac).astype('double'),df_org_2d_flat.sample(frac=frac).astype('double'), f_names, 0.01)
 ```
@@ -418,10 +469,8 @@ Dynamic Time Warping	          1.898949  	2.055921	1.914067	2.013428	1.969417	1.
 Area Between Curves	          0.035566	0.036917	0.035882  	0.036786	0.036718	0.031578
 ```
 
-
-
  
-Vector statistical tests.
+#### **Vector statistical tests**
 
 ```python
  dict_sta, dict_pval  = dist.vector_hypotheses(matrix_org[:, 1],matrix_gen_1[:, 1])
@@ -492,8 +541,9 @@ The first step in the comparison process is to ensure that all the data fits wit
 
 We largely want to compare these two groups of data to identify how simlilar they are. What follows are some techniques that can facilitate this test for similarity. In a sense this then are not simply a library for comparison, but a library for data transformation, distance measurement, and statistical tests. Because we are working with distance metrics, it is better to normalise the datasets from the get go.
 
+**Visualisations**
 
-
+As a sanity test, I have also provided for a few plots of the data. See the Colab notebook for examples.  
 
 
 *This package draws inspiration from a range of methods developed or expounded on by researchers outside and inside the Turing ([signitures](https://www.turing.ac.uk/research/interest-groups/rough-paths), [sktime](https://github.com/alan-turing-institute/sktime) and [quipp](https://github.com/alan-turing-institute/QUIPP-pipeline)). The data has been generated in the following [Colab](https://colab.research.google.com/drive/1_jrYUR7Rwl-8vGSAEFt4hSiXmUZf040g?usp=sharing); the model has been developed by Turing Fellow, [Mihaela van der Schaar](https://www.turing.ac.uk/people/researchers/mihaela-van-der-schaar).*
