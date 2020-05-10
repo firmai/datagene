@@ -360,17 +360,22 @@ print(dist.hash_simmilarity(visu.array_4d_to_rgba_image(mtf_fsdd_4d_org),  visu.
 ```
 
 #### **Distance matrix hypothesis tests**
+The Mantel test provides a means to test the association between distance matrices and has been widely used in ecological and evolutionary studies. Another permutation test based on a Procrustes statistic - a shape finding test - (PROTEST) was developed to compare multivariate data sets. Tests show that PROTEST is likely more powerful than the Mantel test for testing matrix association. As a result of the increased power of PROTEST and the ability to assess the match for individual observations (not available with the Mantel test). The procrustes statistic is higher for generated 1, but the mantel test is higher for generated 2. This hasn't led to anything too conclusive. If we are forced to say something, we might say generated-2 are more correlated to the original data, and that generated-1's distribution is more similar to the original data. 
 
 ```python
 pvalue, stat = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_1)
+pvalue_2, stat_2 = dist.distance_matrix_tests(pwd_ss_2d_org,pwd_ss_2d_gen_2)
 ```
 
 ```
 {'mantel': 0.0, 'procrustes': 0.0, 'rda': -0.0}
 {'mantel': 0.5995869421294606, 'procrustes': 0.4925792204150222, 'rda': 0.9999999999802409}
+{'mantel': 0.0, 'procrustes': 0.0, 'rda': -0.0}
+{'mantel': 0.862124217928853, 'procrustes': 0.13215320039660494, 'rda': 0.9999999999636482}
 ```
 
 #### **Non-parametric entropy multiples**
+Various non-parametric entropy estimation methods can be used to compute the difference between matrices, such as the K-L k-nearest neighbour continuous entropy estimator (centropy), correlation explanation (corex), and mutual information (MI). These scores might best be presented as multiples of relationships. 
 
 ```python
 diss_np_one = dist.entropy_dissimilarity(org.var(axis=0),gen_1.var(axis=0)); print(diss_np_one)
@@ -380,6 +385,8 @@ OrderedDict([('incept_multi', 0.00864), ('cent_multi', 0.25087), ('ctc_multi', 2
 ```
 
 #### **Statistical and geometrics distance measures**
+Next, the distance can simply be taken between the two matrices using various statistical distance and geometrical distance metrics like correlation distance, intersection distance, Renyi divergence, Jensen Shannon divergence, Dice, Kulsinski, Russell Roa and many others. In essence the differences between matrices are collapsed down to a scalar value. These distance metrics are purposefully designed to be applied to matrices. Here I have extended the list to include not just numeric but also Boolean data.  In dataset comparison, we find that bootstrapped hypothesis testing might be good to give the user some clarity in the statistical significance of the indicated divergence. Some methods are invalid for the data used, and displays a nan, for these values the input data can be fixed or the method can be dropped.  
+
 ```python
 dist.matrix_distance(recipe_2_org,recipe_2_gen_1)
 ```
@@ -425,7 +432,9 @@ PCA Error: 0.07666231511948172, PCA Correlation: 0.9996278922766885, p-value: 8.
 (0.07666231511948172, 0.9996278922766885, 8.384146445855097e-14)
 ```
 
-Statistical and geometric distance measures**
+#### **Statistical and geometric distance measures**
+
+Similar to the matrix functions, but applied to vectors. 
 
 ```
 braycurtis	canberra	correlation	  cosine	dice	       euclidean	...
@@ -437,13 +446,13 @@ Iteration_4	0.097794	325.415987	0.029636	0.018002	0.566395    ...
 ```
 
 #### **Geometric distribution distances feature map**
+A method to calculate the difference in distribution using vector distance metrics. 
 
 ```python
 vect_gen_dens_dist, vect_org_dens_dist = dist.distribution_distance_map(pd.DataFrame(org.mean(axis=(1)),columns=f_names),pd.DataFrame(gen_1.mean(axis=(1)),columns=f_names),f_names)
 ```
 
 ```
-
            	Open    	High    	Low             Close   	Adj_Close       Volume 
 braycurtis 	0.584038 	0.586344 	0.591567 	0.582749 	0.587926 	0.725454
 canberra 	9.810338 	9.941922 	10.033852 	9.815635 	9.960998 	14.140223
@@ -452,6 +461,7 @@ correlation 	0.877240 	0.823857 	0.823024 	0.826746 	0.813448 	1.145181
 ```
 
 #### **Curve comparison metrics**
+Another technique is to take a vector an calculate the probability density function using univariate Kernel Density Estimation (KDE) and then compare the curves. Multiple curve metrics can be used to look at the difference, such as curve length difference, partial curve mapping, discrete Frechet distance, dynamic time warping, and the area between curves. This technique would work with any other curves, like ROCAUC curves, or cumulative sum curves.   
 
 ```python
 dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
@@ -467,6 +477,8 @@ dist.curve_metrics(matrix_org_s, matrix_gen_s_1)
  ```
  
 #### **Curve KDE Map**
+Curve metrics accross flattened dataframes for all third-axis features transformed through a kernel density estimation. 
+
 ```python
 vect_org_dens_curve = dist.curve_kde_map(df_org_2d_flat.sample(frac=frac).astype('double'),df_org_2d_flat.sample(frac=frac).astype('double'), f_names, 0.01)
 ```
@@ -482,6 +494,7 @@ Area Between Curves	          0.035566	0.036917	0.035882  	0.036786	0.036718	0.0
 
  
 #### **Vector statistical tests**
+Vectors also have their own tests to look at similarity, such as the Pearson correlation, Wilcoxon Rank-sum, Mood's two sample, Flinger-Killeen, Ansari-Bradley, Bartlett's, Levene, and Mann-Whitney rank test. 
 
 ```python
  dict_sta, dict_pval  = dist.vector_hypotheses(matrix_org[:, 1],matrix_gen_1[:, 1])
