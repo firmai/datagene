@@ -8,10 +8,10 @@ DataGene is developed to detect and compare dataset similarity between real and 
 
 ----------
 1. From Tesseract
-  1. To Tensor & Matrix
+    1. To Tensor & Matrix
         - Matrix Product State
 1. From Tensor
-  1. To Tesseract
+    1. To Tesseract
         - Multivariate Gramian Angular Encoding
         - Multivariate Recurrence Plot
         - Multivariate Markov Transition Fields
