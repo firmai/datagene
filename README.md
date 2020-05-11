@@ -1,4 +1,4 @@
-# DataGene - Data Transformations and Similarity Statistics ((Colab)[https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing])
+# DataGene - Data Transformations and Similarity Statistics ([Colab](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing]))
 
 ![](assets/datavis.png)
 
