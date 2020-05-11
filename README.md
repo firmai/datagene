@@ -158,7 +158,7 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 ```
 
-For example:
+#### Data example:
 
 ```python
 import numpy as np
@@ -167,7 +167,7 @@ bgen_1 = np.random.rand(2,10,4)
 bgen_2 = np.random.rand(2,10,4)
 recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1([borg,bgen_1,bgen_2])
 ```
-Input:
+###### Input:
 
 ```
 array([[[0.52622142, 0.60183253, 0.90520897, 0.87681428],
@@ -194,7 +194,7 @@ array([[[0.52622142, 0.60183253, 0.90520897, 0.87681428],
         
 ```
 
-Output:
+###### Output:
 
 ```
 array([[ 1.        ,  0.5       , -2.98601104, -2.98601104,  0.125     ,
