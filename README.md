@@ -30,6 +30,15 @@ As of now, you would also have to install the following package, until we find a
 pip install git+git://github.com/FirmAI-Research/ecopy.git
 ``
 
+```
+@software{datagene,
+  title = {{DataGene}: Data Transformation and Similarity Statistics},
+  author = {Snow, Derek},
+  url = {https://github.com/firmai/datagene},
+  version = {0.0.4},
+  date = {2020-05-11},
+}
+```
 
 &nbsp;
 
@@ -158,7 +167,7 @@ recipe_2_org,recipe_2_gen_1,recipe_2_gen_2 = transf_recipe_2(datasets)
 
 ```
 
-#### Data example:
+##### Recipe 1 - Data example:
 
 ```python
 import numpy as np
