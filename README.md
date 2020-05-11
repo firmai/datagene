@@ -1,7 +1,100 @@
 # DataGene - Data Transformations and Similarity Statistics
 
 ![](assets/datavis.png)
-DataGene is developed to detect and compare dataset similarity between real and synthetic datasets as well as train, test, and validation datasets. In this example, the first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
+DataGene is developed to detect and compare dataset similarity between real and synthetic datasets as well as train, test, and validation datasets. Datasets can largely be compared using quantitative and visual methods. Generated data can take on many formats, it can consist of multiple dimensions of various widths and heights. Original and generated datasets have to be transformed into an acceptable format before they can be compared, these transformation sometimes leads to a reduction in array dimensions. There are two reasons why we might want to reduce array dimensions, the first is to establish an acceptable format to perform distance calculations; the second is the preference for comparing like with like.
+
+
+**(A) [Transformations](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing):**
+
+----------
+1. From Tesseract
+  1. To Tensor & Matrix
+    - Matrix Product State
+1. From Tensor
+  1. To Tesseract
+    - Multivariate Gramian Angular Encoding
+    - Multivariate Recurrence Plot
+    - Multivariate Markov Transition Fields
+
+  1. To Tensor
+    - Matrix Product State
+    - Recurrence Plot
+
+  1. To Matrix
+    - Aggregates
+    - Tucker
+    - CANDECOMP
+    - Sample PCA
+
+1. From Matrix
+  1. To Tensor
+    - Recurrence Plot
+    - Gramian Angular Field
+    - Markov Transition Field
+
+  1. To Matrix
+    - PCA
+    - SVD
+    - QR 
+    - Feature Kernels
+    - Covariance
+    - Correlation Matrix
+    - 2D Histogram
+    - Pairwise Distance
+    - Pairwise Recurrence Plot
+  1. To Vector
+    - PCA Single Component
+    - Histogram Filter
+1. From Vector
+  1. To Matrix
+    - Signitures Method
+  1. To Vector
+    - Extraction
+    - Autocorrelation
+
+**(B) Visualisations:**
+
+----------
+1. Convert Arrays to Images
+1. Histogram
+1. Signiture
+1. Gramian
+1. Recurrence
+1. Markov Transition Fields
+1. Correlation Matrix
+1. Pairplot
+1. Cord Lenght
+
+
+**(C) Distance Measures:**
+
+----------
+
+
+1. Tensor/Matrix
+  1. Contribution Values
+    1. Predictions
+    1. Feature Ordering
+    1. Direction Divergence
+    1. Effect Size
+1. Matrix
+  1. Structural Similarity
+  1. Similarity Histogram
+  1. Hash Similarity
+  1. Distance Matrix Hypothesis Test
+  1. Dissimilarity Measures
+  1. Statistical and Geometric Measures
+1. Vectors
+  1. PCA Extracted Variance Explained
+  1. Statistical and Geometrics Distances
+  1. Geometric Distance Feature Map
+  1. Curve Metrics
+  1. Curve Metrics Feature Map
+  1. Hypotheses Distance
+
+
+
+In this example, the first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
 
 As of now, this package is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply. To run the package interactively, use this [notebook](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing).
 
