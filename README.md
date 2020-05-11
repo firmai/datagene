@@ -16,9 +16,9 @@ pip install datagene
 ```
 As of now, you would also have to install the following package, until we find an alternative
 
-``
+```
 pip install git+git://github.com/FirmAI-Research/ecopy.git
-``
+```
 ```python
 from datagene import distance as dist          # Distance Functions
 from datagene import transform as tran         # Transformation Functions
