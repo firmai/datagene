@@ -4,7 +4,7 @@
 DataGene is developed to detect and compare dataset similarity between real and synthetic datasets as well as train, test, and validation datasets. Datasets can largely be compared using quantitative and visual methods. Generated data can take on many formats, it can consist of multiple dimensions of various widths and heights. Original and generated datasets have to be transformed into an acceptable format before they can be compared, these transformation sometimes leads to a reduction in array dimensions. There are two reasons why we might want to reduce array dimensions, the first is to establish an acceptable format to perform distance calculations; the second is the preference for comparing like with like.
 
 
-**(A) [Transformations](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing):**
+**(A) Transformations ([Colab](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing)):**
 
 ----------
 1. From Tesseract
