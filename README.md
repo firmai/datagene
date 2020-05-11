@@ -1,8 +1,7 @@
 # DataGene - Data Transformations and Similarity Statistics
 
 ![](assets/datavis.png)
-
-The first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
+DataGene is developed to detect and compare dataset similarity between real and sythetic datasets as well as train, test, and validation datasets. In this example, the first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
 
 As of now, this package is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply. To run the package interactively, use this [notebook](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing]).
 
