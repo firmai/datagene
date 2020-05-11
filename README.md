@@ -3,7 +3,7 @@
 ![](assets/datavis.png)
 DataGene is developed to detect and compare dataset similarity between real and sythetic datasets as well as train, test, and validation datasets. In this example, the first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
 
-As of now, this package is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply. To run the package interactively, use this [notebook](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing]).
+As of now, this package is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply. To run the package interactively, use this [notebook](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing).
 
 ```python
 datasets = [org, gen_1, gen_2]
@@ -616,22 +616,11 @@ Example of Blend Operations:
 1. PCA on Features. 
 1. 2D Histogram.
 
-
-\*Moving away from element-wise sample comparison towards structured comparisons.
-
-**GAN Methods**
-
-Using GAN methods, we can reproduce or generate data of any dimensional type. Before the generation of synthetic datasets, we generally have an idea of the type of problem we want to solve. If it is a prediction problem that requires the anonimisation of data, one might prefer to generate data in a prediction-ready format.
-
-In this example, the generated data is prepackaged for a prediction problem. It contains the standard 6 market data features, including the different price attributes (close, open etc.) and volume for a time series of Google's Stocks price for 3661 days. The generated data is constructed such that it looks back for 24 time-steps. We therefore have a three-dimensional data structure (array) when we include the sample dimension.
-
-The first step in the comparison process is to ensure that all the data fits within one data structure, as this is a requirement for future transformation and distance metrics. Each of the above arrays, the generated version (gen_1) and the real verion (org) consists of 3661 samples of 2D arrays (matrices) with six features and 24 time steps each. In total the size is 3661 x 6 x 24 (527184.
-
-We largely want to compare these two groups of data to identify how simlilar they are. What follows are some techniques that can facilitate this test for similarity. In a sense this then are not simply a library for comparison, but a library for data transformation, distance measurement, and statistical tests. Because we are working with distance metrics, it is better to normalise the datasets from the get go.
+To blend in samples means to move away from element-wise sample comparison towards structured comparisons.
 
 **Visualisations**
 
-As a sanity test, I have also provided for a few plots of the data. See the Colab notebook for examples.  
+As a sanity test, I have also provided for a few plots of the data. See the Colab [notebook](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing) for examples.  
 
 
 *This package draws inspiration from a range of methods developed or expounded on by researchers outside and inside the Turing ([signitures](https://www.turing.ac.uk/research/interest-groups/rough-paths), [sktime](https://github.com/alan-turing-institute/sktime) and [quipp](https://github.com/alan-turing-institute/QUIPP-pipeline)). The data has been generated in the following [Colab](https://colab.research.google.com/drive/1_jrYUR7Rwl-8vGSAEFt4hSiXmUZf040g?usp=sharing); the model has been developed by Turing Fellow, [Mihaela van der Schaar](https://www.turing.ac.uk/people/researchers/mihaela-van-der-schaar).*
