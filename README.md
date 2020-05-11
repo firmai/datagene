@@ -16,43 +16,43 @@ DataGene is developed to detect and compare dataset similarity between real and 
         - Multivariate Recurrence Plot
         - Multivariate Markov Transition Fields
 
-  1. To Tensor
+    1. To Tensor
         - Matrix Product State
         - Recurrence Plot
 
-  1. To Matrix
+    1. To Matrix
         - Aggregates
         - Tucker
         - CANDECOMP
         - Sample PCA
 
 1. From Matrix
-  1. To Tensor
-    - Recurrence Plot
-    - Gramian Angular Field
-    - Markov Transition Field
+    1. To Tensor
+        - Recurrence Plot
+        - Gramian Angular Field
+        - Markov Transition Field
 
-  1. To Matrix
-    - PCA
-    - SVD
-    - QR 
-    - Feature Kernels
-    - Covariance
-    - Correlation Matrix
-    - 2D Histogram
-    - Pairwise Distance
-    - Pairwise Recurrence Plot
-  1. To Vector
-    - PCA Single Component
-    - Histogram Filter
+    1. To Matrix
+         - PCA
+         - SVD
+         - QR 
+         - Feature Kernels
+         - Covariance
+         - Correlation Matrix
+         - 2D Histogram
+         - Pairwise Distance
+         - Pairwise Recurrence Plot
+     1. To Vector
+         - PCA Single Component
+         - Histogram Filter
 1. From Vector
-  1. To Matrix
-    - Signitures Method
-  1. To Vector
-    - Extraction
-    - Autocorrelation
+     1. To Matrix
+        - Signitures Method
+    1. To Vector
+        - Extraction
+        - Autocorrelation
 
-**(B) Visualisations:**
+**(B) Visualisations ([Colab](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing)):**
 
 ----------
 1. Convert Arrays to Images
@@ -66,32 +66,31 @@ DataGene is developed to detect and compare dataset similarity between real and 
 1. Cord Lenght
 
 
-**(C) Distance Measures:**
+**(C) Distance Measures ([Colab](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing)):**
 
 ----------
 
 
 1. Tensor/Matrix
-  1. Contribution Values
-    1. Predictions
-    1. Feature Ordering
-    1. Direction Divergence
-    1. Effect Size
+     1. Contribution Values
+          1. Predictions
+          1. Feature Ordering
+          1. Direction Divergence
+          1. Effect Size
 1. Matrix
-  1. Structural Similarity
-  1. Similarity Histogram
-  1. Hash Similarity
-  1. Distance Matrix Hypothesis Test
-  1. Dissimilarity Measures
-  1. Statistical and Geometric Measures
+      1. Structural Similarity
+      1. Similarity Histogram
+      1. Hash Similarity
+      1. Distance Matrix Hypothesis Test
+      1. Dissimilarity Measures
+      1. Statistical and Geometric Measures
 1. Vectors
-  1. PCA Extracted Variance Explained
-  1. Statistical and Geometrics Distances
-  1. Geometric Distance Feature Map
-  1. Curve Metrics
-  1. Curve Metrics Feature Map
-  1. Hypotheses Distance
-
+     1. PCA Extracted Variance Explained
+     1. Statistical and Geometrics Distances
+     1. Geometric Distance Feature Map
+     1. Curve Metrics
+     1. Curve Metrics Feature Map
+     1. Hypotheses Distance
 
 
 In this example, the first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
