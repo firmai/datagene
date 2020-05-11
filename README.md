@@ -28,6 +28,7 @@ from datagene import dist_utilities as distu   # Distance Utilities
 from datagene import vis_utilities as visu     # Visualisation Utility Functions
 ```
 
+Please cite:
 ```
 @software{datagene,
   title = {{DataGene}: Data Transformation and Similarity Statistics},
