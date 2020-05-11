@@ -4,7 +4,7 @@
 
 The first thing we want to do is generate various datasets and load them into a list. See [this](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing) notebook for an example of generating synthetic datasets by Turing Fellow, Mihaela van der Schaar, and researchers Jinsung Yoon, and Daniel Jarrett. As soon as we have these datasets, we load them into a list, starting with the original data.
 
-As of now, this packakge is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply.
+As of now, this package is catering to time-series regression tasks, and more specifically input arrays with a three dimensional structure. The hope is that it will be extended to time-series classification and cross-sectional regression and classification tasks. This package can still be used for other tasks, but some functions won't apply.
 
 ```python
 datasets = [org, gen_1, gen_2]
@@ -35,7 +35,7 @@ pip install git+git://github.com/FirmAI-Research/ecopy.git
 
 # Transformation Recipes
 
-*You have the ability to work with 2D and 3D generated data. This notebook will work with a 3D time series array. Data has to organised as samples, time steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
+*You have the ability to work with 2D and 3D generated data. The **[notebook](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing)** excerpted in this documents, uses a 3D time series array. Data has to organised as samples, time steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
 
 
 This first recipe uses six arbitary transformations to identify the similarity of datasets. As an analogy, imagine you're importing similar looking oranges from two different countries, and you want to see whether there is a difference in the constitution of these oranges compared to the local variety your customers have gotten used to. To do that you might follow a six step process, first you press the oranges for pulp, then you boil the pulp, you then maybe sift the pulp out and drain the juice, you add apple juice to the pulp, and then add an organge concentrate back to the pulp, you then dry the concoction on a translucent petri dish and shine light through the petri dish to identify differences in patterns between the organges using various distance metrics. You might want to do the process multiple times and establish an average and possibly even a significance score. The transformation part, is the process we put the data through to be ready for similarity calculations.
@@ -56,8 +56,6 @@ From Tensor:
 
 ```tran.mtf_encode_3_to_4()``` - A Markov Transition Field is an image obtained from a time series, representing a field of transition probabilities for a discretized time series.
 
-```tran.mps_decomp_3_to_2()``` - Matrix-product state are as the de facto  standard for the representation of one-dimensional quantum many body states.
-
 ```tran.jrp_encode_3_to_3()``` - A joint recurrence plot (JRP) is a graph which shows all those times at which a recurrence in one dynamical system occurs simultaneously with a recurrence in a second dynamical system
 
 ```tran.mean_3_to_2()``` - Mean aggregation at the sample level.
@@ -67,6 +65,8 @@ From Tensor:
 ```tran.min_3_to_2()``` - Minimum aggregation at the sample level.
 
 ```tran.var_3_to_2()``` - Variation aggregation at the sample level.
+
+```tran.mps_decomp_3_to_2()``` - Matrix-product state are as the de facto  standard for the representation of one-dimensional quantum many body states.
 
 ```tran.tucker_decomp_3_to_2()``` - Tucker decomposition decomposes a tensor into a set of matrices and one small core tensor
 
