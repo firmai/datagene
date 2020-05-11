@@ -1,4 +1,4 @@
-# DataGene - Data Transformations and Similarity Statistics
+# DataGene - Data Transformations and Similarity Statistics ((Colab)[https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing])
 
 ![](assets/datavis.png)
 
@@ -43,7 +43,7 @@ Citation:
 
 # Transformation Recipes
 
-*You have the ability to work with 2D and 3D generated data. The **[notebook](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing)** excerpted in this documents, uses a 3D time series array. Data has to organised as samples, time steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
+*You have the ability to work with 2D and 3D generated data. The **[notebook](https://colab.research.google.com/drive/1QSDTKvNiwc1IRCX_VYr9TRFusdX1gLMM?usp=sharing)** excerpted in this documents, uses a 3D time series array. Data has to organised as samples, time steps, features, ```[i,s,f]```. If you are working with a 2D array, the data has to be organised as samples, features ```[i,f]```.*
 
 
 This first recipe uses six arbitary transformations to identify the similarity of datasets. As an analogy, imagine you're importing similar looking oranges from two different countries, and you want to see whether there is a difference in the constitution of these oranges compared to the local variety your customers have gotten used to. To do that you might follow a six step process, first you press the oranges for pulp, then you boil the pulp, you then maybe sift the pulp out and drain the juice, you add apple juice to the pulp, and then add an organge concentrate back to the pulp, you then dry the concoction on a translucent petri dish and shine light through the petri dish to identify differences in patterns between the organges using various distance metrics. You might want to do the process multiple times and establish an average and possibly even a significance score. The transformation part, is the process we put the data through to be ready for similarity calculations.
