@@ -3,6 +3,23 @@
 ![](assets/datavis.png)
 DataGene is developed to detect and compare dataset similarity between real and synthetic datasets as well as train, test, and validation datasets. Datasets can largely be compared using quantitative and visual methods. Generated data can take on many formats, it can consist of multiple dimensions of various widths and heights. Original and generated datasets have to be transformed into an acceptable format before they can be compared, these transformation sometimes leads to a reduction in array dimensions. There are two reasons why we might want to reduce array dimensions, the first is to establish an acceptable format to perform distance calculations; the second is the preference for comparing like with like.
 
+Installation and import modules:
+
+```
+pip install datagene
+```
+As of now, you would also have to install the following package, until we find an alternative
+
+```
+pip install git+git://github.com/FirmAI-Research/ecopy.git
+```
+```python
+from datagene import distance as dist          # Distance Functions
+from datagene import transform as tran         # Transformation Functions
+from datagene import mod_utilities as mod      # Model Development Utilities
+from datagene import dist_utilities as distu   # Distance Utilities
+from datagene import vis_utilities as visu     # Visualisation Utility Functions
+```
 
 **(A) Transformations ([Colab](https://colab.research.google.com/drive/1aenzDNjZjRHdR9YO1iPBTrzoTrqYaHtQ?usp=sharing)):**
 
@@ -99,24 +116,6 @@ As of now, this package is catering to time-series regression tasks, and more sp
 
 ```python
 datasets = [org, gen_1, gen_2]
-```
-
-Installation and import modules:
-
-```
-pip install datagene
-```
-As of now, you would also have to install the following package, until we find an alternative
-
-```
-pip install git+git://github.com/FirmAI-Research/ecopy.git
-```
-```python
-from datagene import distance as dist          # Distance Functions
-from datagene import transform as tran         # Transformation Functions
-from datagene import mod_utilities as mod      # Model Development Utilities
-from datagene import dist_utilities as distu   # Distance Utilities
-from datagene import vis_utilities as visu     # Visualisation Utility Functions
 ```
 
 Citation:
