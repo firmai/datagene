@@ -15,7 +15,11 @@ Installation and import modules:
 ```
 pip install datagene
 ```
+As of now, you would also have to install the following package, until we find an alternative
 
+``
+pip install git+git://github.com/FirmAI-Research/ecopy.git
+``
 ```python
 from datagene import distance as dist          # Distance Functions
 from datagene import transform as tran         # Transformation Functions
@@ -23,12 +27,6 @@ from datagene import mod_utilities as mod      # Model Development Utilities
 from datagene import dist_utilities as distu   # Distance Utilities
 from datagene import vis_utilities as visu     # Visualisation Utility Functions
 ```
-
-As of now, you would also have to install the following package, until we find an alternative
-
-``
-pip install git+git://github.com/FirmAI-Research/ecopy.git
-``
 
 ```
 @software{datagene,
