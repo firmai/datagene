@@ -241,6 +241,9 @@ recipe_1_org,recipe_1_gen_1,recipe_1_gen_2 = transf_recipe_1(datasets)
 
 ```
 
+In the example above, Multivariate Recurrence Plots (mrp) are a way to visualise the behavior of a trajectory of a dynamical system in phase space. Matrix-product state (mps) are the de facto standard for the representation of one-dimensional quantum many body states. A Gramian Angular Field (gaf) is an image obtained from a time series, representing some temporal correlation between each time point. Tucker (tucker) decomposition decomposes a tensor into a set of matrices and one small core tensor. The QR decomposition (qr) of a matrix is a decomposition of the matrix into an orthogonal matrix and a triangular matrix. Principal component analysis (pca) is a mathematical algorithm that reduces the dimensionality of the data while retaining most of the variation in the data set. The signature method (sig) is a transformation of a path into a sequence that encapsulates summaries of the path.
+
+
 #### Transformation Recipe Pipeline 2
 Here we just reorder the transformation performed in Pipeline 1, naturally leading to a different matrix output. 
 
