@@ -117,7 +117,7 @@ def model_output(org, epochs=5,random_state=1, frac=1):
 def model_output_cross(org, gen, epochs=5,random_state=1, frac=1):
 
   org_x_tr, org_x_vl, org_y_tr, org_y_vl, org_y_vl_m1 = prepare_df_rand(org,random_state=random_state, frac=frac)
-  gen_x_tr, org_x_vl, gen_y_tr, gen_y_vl, gen_y_vl_m1 = prepare_df_rand(org,random_state=random_state, frac=frac)
+  gen_x_tr, org_x_vl, gen_y_tr, gen_y_vl, gen_y_vl_m1 = prepare_df_rand(gen,random_state=random_state, frac=frac)
 
 
   BATCH_SIZE = 32
