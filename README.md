@@ -1,6 +1,7 @@
 # DataGene - Data Transformations and Similarity Statistics
 
 [![Downloads](https://pepy.tech/badge/datagene/month)](https://pepy.tech/project/datagene/month)
+[![DOI](https://zenodo.org/badge/262629246.svg)](https://zenodo.org/badge/latestdoi/262629246)
 
 ![](assets/datavis.png)
 **DataGene** is developed to detect and compare dataset similarity between real and synthetic datasets as well as train, test, and validation datasets. You can read the report on [SSRN](https://ssrn.com/abstract=3619626) for additional details. Datasets can largely be compared using quantitative and visual methods. Generated data can take on many formats, it can consist of multiple dimensions of various widths and heights. Original and generated datasets have to be transformed into an acceptable format before they can be compared, these transformation sometimes leads to a reduction in array dimensions. There are two reasons why we might want to reduce array dimensions, the first is to establish an acceptable format to perform distance calculations; the second is the preference for comparing like with like. You can use the **[MTSS-GAN](https://github.com/firmai/mtss-gan)** to generate diverse multivariate time series data using stacked generative adversarial networks in combination with embedding and recurrent neural network models. 
