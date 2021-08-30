@@ -2,9 +2,9 @@
 
 ---------
 
-## Sponsor Sov.ai Research Lab
+## Sov.ai Research Lab (Sponsorship)
 
-Animated Investment Management Research at [Sov.ai](https://sov.ai), Sponsoring Open Source AI, Machine learning, and Data Science initiatives.
+Animated Investment Management Research at [Sov.ai](https://sov.ai), sponsoring open source AI, Machine learning, and Data Science initiatives.
 
 ---------
 
