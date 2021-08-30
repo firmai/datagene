@@ -1,5 +1,13 @@
 # DataGene - Data Transformations and Similarity Statistics
 
+---------
+
+## Sponsor Sov.ai Research Lab
+
+Animated Investment Management Research at [Sov.ai](https://sov.ai), Sponsoring Open Source AI, Machine learning, and Data Science initiatives.
+
+---------
+
 [![Downloads](https://pepy.tech/badge/datagene/month)](https://pepy.tech/project/datagene/month)
 [![DOI](https://zenodo.org/badge/262629246.svg)](https://zenodo.org/badge/latestdoi/262629246)
 
