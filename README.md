@@ -1,10 +1,5 @@
 # DataGene - Data Transformations and Similarity Statistics
 
----------
-
-## Sov.ai Research Lab (Sponsorship)
-
-Animated Investment Management Research at [Sov.ai](https://sov.ai), sponsoring open source AI, Machine learning, and Data Science initiatives.
 
 ---------
 
